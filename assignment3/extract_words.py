@@ -1,7 +1,7 @@
 import io
 import re
 from collections import defaultdict
-
+from collections import OrderedDict
 def main():
 	#	import and read txt file
 	#	saving grace reference: https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string
@@ -27,6 +27,7 @@ def main():
 	g.write("\n".join(txt))
 	g.close()
 
+
 	#	make uniquewords.text using a dictionary and join
 	wordCount = defaultdict(int)
 	for i in txt:
@@ -40,6 +41,7 @@ def main():
 	for i in wordCount.values():
 		occuranceCount[i] += 1
 	occuranceString = []
+	occuranceCount = {k: v for k, v in sorted(occuranceCount.items(), key=lambda item: item[1])}
 	for i,j in occuranceCount.items():
 		occuranceString.append((str(i) + " : " + str(j)))
 	k = open("wordfrequency.txt", "w")
