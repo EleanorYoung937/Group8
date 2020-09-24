@@ -8,11 +8,10 @@ void draw(){
   int num_lines = lines.length;
   for (int i =0;i<num_lines;i++){
       String[] tuple = split(lines[i], ':');
-      float wid = float(tuple[1]);
-      print(wid,"\n");
+      float wid = float(tuple[0]);
       stroke(0);
       rectMode(CENTER);
-      rect(2531/4,3*(2*i+1),wid,6);
+      rect(2531/4,3*(2*i+1),wid/4,6);
       }
   noLoop();
 }
