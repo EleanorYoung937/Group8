@@ -22,8 +22,8 @@ def main():
 	#	turn into a list of strings with only alphabetical characters
 	txt = re.findall("[a-z]+", txt[idx:])
 
-	#	make alltext.txt
-	g = open("alltext.txt", "w")
+	#	make allwords.txt
+	g = open("allwords.txt", "w")
 	g.write("\n".join(txt))
 	g.close()
 
