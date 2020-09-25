@@ -12,7 +12,7 @@ void setup() {
   background(164, 212, 229);
 
   //read words from the txt file
-  String[] all_words = loadStrings("uniquewords.txt");
+  String[] all_words = loadStrings("../uniquewords.txt");
 
   //find the length of the list and use the number to generate list random words
   int number = all_words.length;

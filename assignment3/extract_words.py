@@ -42,7 +42,7 @@ def main():
 		occuranceCount[i] += 1
 	occuranceString = []
 	occuranceCount = {k: v for k, v in sorted(occuranceCount.items(), key=lambda item: item[1])}
-	for i,j in occuranceCount.items():
+	for i,j in sorted(occuranceCount.items()):
 		occuranceString.append((str(i) + " : " + str(j)))
 	k = open("wordfrequency.txt", "w")
 	k.write("\n".join(occuranceString))
