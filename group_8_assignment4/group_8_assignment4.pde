@@ -1,5 +1,6 @@
 Tree t1;
 Grass g1;
+Moon m1;
 
 color old_gold = color(201, 184, 36);
 color citrine= color(221, 202, 40);
@@ -21,6 +22,7 @@ void setup(){
   size(650, 650);
   t1 = new Tree(200, 200, width/5, 3*height/5, yellows);
   g1 = new Grass(0, 250, width, height, 15, greens);
+  m1 = new Moon(50,600,70,old_gold,5,70);
 }
 
 void draw(){
@@ -30,11 +32,15 @@ void draw(){
   
   //grass
   g1.display();
-  //fill(rifle_green);
-  //rect(0, 250, width, height);
+  fill(rifle_green);
+  rect(0, 250, width, height);
 
   t1.display();
   
-  //noLoop();
+  noLoop();
+  
+  // moon rising 
+  m1.display();
+  m1.move();
   
 }
