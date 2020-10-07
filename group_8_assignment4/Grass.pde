@@ -5,6 +5,7 @@ class Grass{
   float y;
   float gWidth;
   float gHeight;
+  color[] colors;
   
   Grass(float _x, float _y, float gWidth, float gHeight, float dimension, color[] colors){
     this.dim = dimension;
@@ -12,6 +13,7 @@ class Grass{
     this.y = _y;
     this.gWidth = gWidth;
     this.gHeight = gHeight;
+    this.colors =colors;
   }
   
   void display(){
