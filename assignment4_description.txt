@@ -1,4 +1,4 @@
-This animation depicts a fall night scene. In the background, the sky will be dark blue and the grass will be dark green. During the animation, the moon will rise and birds will fly across the canvas. In the meantime, leaves are seen falling from the tree and the fish will swim as the river flows. 
+﻿This animation depicts a fall night scene. In the background, the sky will be dark blue and the grass will be dark green. During the animation, the moon will rise and birds will fly across the canvas. In the meantime, leaves are seen falling from the tree and the fish will swim as the river flows. 
 
 The classes used to create the animation are as follows:
 
@@ -13,3 +13,5 @@ The classes used to create the animation are as follows:
 5. Wave (Minghan Yu) - Wave is a class. By inputting position, size and angle for an instance, one can create a customized wave.  By using method display one can display a wave at given place. By using move method, the instance of wave can move back and forth corresponding to the given speed. The Spindrift of the wave moves automatically follows projectory trail.
 
 6. Fish (Minghan Yu) - Fish is a class. By inputting position, size and angle for an instance, one can create a customized wave. By using method display one can display a fish at given place. By using move_tail method the tail of fish instance will rotate back and forth. By applying super_jump method the fish instance can perform an exciting cool jump.
+
+7. Grass (Eleanor Young) – I used this class to create a tiled square that cycled through a set of green colors. Ultimately I decided it detracted from the overall aesthetics of out sketch (it was ugly) so I didn’t use it. However it inspired Evergreen.
