@@ -1,5 +1,5 @@
 class Wave{
-  float x; float y; float size; float angle; float speed; PShape wave; int n =1;
+  float x; float y; float size; float angle; float speed; PShape wave; float n =0;
   PVector p1 = new PVector(0.0,0.0); float t =0.01;
   //Wave of gien position, size and angle can be created
   Wave(float x, float y, float size, float angle){
@@ -76,14 +76,9 @@ class Wave{
     }
   //Let wave move back and forth  
   void move(float speed){
-    if (n >=0 & n<30){
-    x += speed *size * cos(angle) ;
-    y += speed *size * sin(angle) ;}
-    else if(n>=30){
-      n = -31;}
-    else{
-    x -= speed *size * cos(angle) ;
-    y -= speed *size * sin(angle) ;}
-    n += 1;
-    }
+    x += (speed *size * cos(angle))*sin(n) ;
+    y += (speed *size * sin(angle))*sin(n) ;
+    n += 0.02*speed;
+}
+
 }

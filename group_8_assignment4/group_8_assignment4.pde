@@ -31,7 +31,7 @@ void setup(){
   //g1 = new Grass(0, 250, width, height, 15, greens);
   m1 = new Moon(50,700,70,old_gold,5,70);
   b1 = new Birds(600,150,color(0));
-  w1 = new Wave(180,300,0.5,-0.5);
+  w1 = new Wave(170,320,0.5,-0.5);
   w2 = new Wave(300,300,0.3,-0.2);
   f1 = new Fish(200,200,0.3,-0.3);
   f2 = new Fish(300,350,0.5,0.5);
@@ -73,9 +73,9 @@ void draw(){
   
   //wave
   w1.display();
-  w1.move(0.3);
+  w1.move(2);
   w2.display();
-  w2.move(0.5);
+  w2.move(1);
   
   //static fish
   f2.display();
