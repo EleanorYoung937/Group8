@@ -17,13 +17,15 @@ class Moon{
 
   
   void display(){
-    fill(this.c);
-    ellipse(this.x,this.y,this.r,this.r);
+    fill(c);
+    ellipse(x,y,r,r);
   }
   
   void move(){
-    if (this.y > this.stay){
-      this.y -= this.speed;
+    if (y > stay){
+      y -= speed;
+    }else if(y <= stay){
+      y = 600;
     }
   }
 }

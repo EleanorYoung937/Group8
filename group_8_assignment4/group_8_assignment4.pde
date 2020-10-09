@@ -1,6 +1,7 @@
 Tree t1;
 Grass g1;
 Moon m1;
+Birds b1;
 
 color old_gold = color(201, 184, 36);
 color citrine= color(221, 202, 40);
@@ -14,15 +15,17 @@ color msu_green= color(45, 71, 57);
 color green= color(48, 71, 45);
 color feldgrau= color(64, 88, 75);
 
+
 color[] yellows = {old_gold, citrine, bright_yellow, harvest_gold, liver_dogs};
 color[] greens = {green, rifle_green, msu_green, feldgrau};
 color[] blues = {royal_blue_dark};
 
 void setup(){
   size(650, 650);
-  t1 = new Tree(200, 200, width/5, 3*height/5, yellows);
-  g1 = new Grass(0, 250, width, height, 15, greens);
-  m1 = new Moon(50,600,70,old_gold,5,70);
+  //t1 = new Tree(200, 200, width/5, 3*height/5, yellows);
+  //g1 = new Grass(0, 250, width, height, 15, greens);
+  m1 = new Moon(50,700,70,old_gold,5,70);
+  b1 = new Birds(600,150,color(0));
 }
 
 void draw(){
@@ -31,16 +34,18 @@ void draw(){
   background(royal_blue_dark);
   
   //grass
-  g1.display();
-  fill(rifle_green);
-  rect(0, 250, width, height);
+  //g1.display();
+  //fill(rifle_green);
+  //rect(0, 250, width, height);
 
-  t1.display();
+  //t1.display();
   
-  noLoop();
+  //noLoop();
   
   // moon rising 
   m1.display();
   m1.move();
+  b1.display();
+  b1.move();
   
 }
