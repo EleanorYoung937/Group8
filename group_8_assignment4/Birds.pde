@@ -5,11 +5,13 @@ class Birds{
   float x;
   float y;
   float a = 0.0;
+  flat scale;
   
-  Birds(float x, float y, color c){
+  Birds(float x, float y, color c, float scale){
     this.x = x;
     this.y = y;
     this.c = c;
+    this.scale = scale;
   }
   
   void display(){
@@ -25,6 +27,7 @@ class Birds{
     bird.vertex(x+50,y+30);
     bird.vertex(x+20,y-3);
     bird.endShape();
+    bird.scale(scale);
     shape(bird);
   }
   
