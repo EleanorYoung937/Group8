@@ -5,7 +5,7 @@ class Birds{
   float x;
   float y;
   float a = 0.0;
-  flat scale;
+  float scale;
   
   Birds(float x, float y, color c, float scale){
     this.x = x;
