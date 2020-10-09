@@ -47,7 +47,7 @@ class Fish{
       scale(size);      
       x = x123;
       y = y123;
-      println(x,y);
+      //println(x,y);
       popMatrix();
         }
     
