@@ -4,6 +4,8 @@ Evergreen e2;
 Evergreen e3;
 Moon m1;
 Birds b1;
+Birds b2;
+Birds b3;
 Wave w1;
 Wave w2;
 Fish f1;
@@ -30,7 +32,9 @@ void setup(){
   //t1 = new Tree(200, 200, width/5, 3*height/5, yellows);
   //g1 = new Grass(0, 250, width, height, 15, greens);
   m1 = new Moon(50,700,70,old_gold,5,70);
-  b1 = new Birds(600,150,color(0));
+  b1 = new Birds(600,150,color(0),1);
+  b2 = new Birds(600,100,color(0),0.5);
+  b3 = new Birds(600,200,color(0),0.7);
   w1 = new Wave(170,320,0.5,-0.5);
   w2 = new Wave(300,300,0.3,-0.2);
   f1 = new Fish(200,200,0.3,-0.3);
@@ -49,8 +53,14 @@ void draw(){
   // moon rising 
   m1.display();
   m1.move();
+  
+  // birds flying
   b1.display();
   b1.move();
+  b2.display();
+  b2.move();
+  b3.display();
+  b3.move();
  
   //grass
   fill(rifle_green);
