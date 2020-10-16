@@ -33,9 +33,6 @@ class TwinStars extends Star{
     fill(255,255,255,5);
     sphere(size/2 + (col.length - 1)*4);
     popMatrix();
-    
-    stroke(0);
-    strokeWeight(1);
   }
   
   
