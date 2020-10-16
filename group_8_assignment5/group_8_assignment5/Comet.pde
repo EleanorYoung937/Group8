@@ -30,7 +30,8 @@ class Comet{
     void orbit(){
       pos_x = aphelion*cos(theta);
       pos_z = perihelion*sin(theta);
-      theta += 0.01;}
+      theta += 0.01;
+    }
      
      
      

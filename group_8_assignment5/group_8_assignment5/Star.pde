@@ -47,6 +47,9 @@ class Star{
     sphere(size + (col.length - 1)*4);
     popMatrix();
     motion ++;
+    
+    stroke(0);
+    strokeWeight(1);
   }
   
   void orbit(int inc){

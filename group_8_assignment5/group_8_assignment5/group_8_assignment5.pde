@@ -8,7 +8,10 @@ void setup(){
   rp1 = new rotate_planet(50, 0,100,200,100);
   s1 = new Star(10, 250,50,-50);
   t1 = new TwinStars(2, 350,350,50);
-  c1 = new Comet(0,0,0,20,30,100);
+  c1 = new Comet(100,100,0,20,30,100);
+  stroke(0);
+  strokeWeight(1);
+  
 }
 
 void draw(){
