@@ -2,7 +2,6 @@ rotate_planet rp1;
 Star s1;
 TwinStars t1;
 Comet c1;
-
 void setup(){
   size(500,500,P3D);
   rp1 = new rotate_planet(50, 0,100,200,100);
