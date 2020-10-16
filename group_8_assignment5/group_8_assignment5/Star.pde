@@ -41,7 +41,7 @@ class Star{
     translate(temp_x, temp_y, temp_z);
     for (int i = 1; i < (col.length); i++){
       fill(col[i]);
-      sphere(10 + i * 4);
+      sphere(size + i * 4);
     }
     fill(255,255,255,5);
     sphere(size + (col.length - 1)*4);
