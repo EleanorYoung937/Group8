@@ -16,6 +16,8 @@ class rotate_planet {
 
   void display() {
     PShape sphere = createShape(SPHERE, x);
+    //stroke(0);
+    //strokeWeight(3);
     fill(r,g,b);
     pushMatrix();
     rotateX(angle);
