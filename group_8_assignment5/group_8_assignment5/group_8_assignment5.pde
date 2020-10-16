@@ -5,7 +5,7 @@ Comet c1;
 
 void setup(){
   size(500,500,P3D);
-  rp1 = new rotate_planet(50, 0,100,200,100);
+  rp1 = new rotate_planet(50, 0,100,200,100,width,height);
   s1 = new Star(10, 250,50,-50);
   t1 = new TwinStars(2, 350,350,50);
   c1 = new Comet(100,100,0,20,30,100);
@@ -16,10 +16,7 @@ void setup(){
 
 void draw(){
   background(14,32,46);
-  pushMatrix();
-  translate(width/2, height/2);
   rp1.display();
-  popMatrix();
   s1.display();
   s1.orbit(1/2);
   t1.display();
