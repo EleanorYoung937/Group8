@@ -18,13 +18,12 @@ class Comet{
      translate(x,y,z);
      translate(pos_x,0,pos_z);
      fill(255);
-     ambientLight(0,128,255);
-     ambient(0,128,255);
      specular(255,128,0);
      lightSpecular(255,255,255);
      shininess(0.5);
      //this point light chaning with angle imitates light caused by friction
-     pointLight(255,128,0,size*10*cos(theta),0,size*10*sin(theta));;     sphere(size);
+     pointLight(255,128,0,size*10*cos(theta),0,size*10*sin(theta));     
+     sphere(size);
      popMatrix();
    }
    //let comet orbit with respect to given aphelion and perihelion
