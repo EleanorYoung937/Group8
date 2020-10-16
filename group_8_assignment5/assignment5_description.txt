@@ -1,0 +1,3 @@
+Our 3D animation depicts objects in a galaxy.
+
+rotate_planet class is written by Qiaochu and used a PShape sphere. This object takes 5 float parameters indicating the radius of the sphere, the angle, and the RGB values. The sphere is then displayed and a directional light is projected. It is also rotated on the X-axis. 
