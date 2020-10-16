@@ -2,5 +2,9 @@ Our 3D animation depicts objects in a galaxy.
 
 rotate_planet class is written by Qiaochu and used a PShape sphere. This object takes 5 float parameters indicating the radius of the sphere, the angle, and the RGB values. The sphere is then displayed and a directional light is projected. It is also rotated on the X-axis. 
 
-comet class get input of position of orbiting center, size of comet and parameter of aphelion and perihelion. Display method shows the comet defaultly at perihelion. Orbit method lets the comet orbit with respect to aphelion and perihelion. It is also the only light source in the universe to cast light on other planets. 
+comet class get input of position of orbiting center, size of comet and parameter of aphelion and perihelion. Display method shows the comet defaultly at perihelion. Orbit method lets the comet orbit with respect to aphelion and perihelion. It is also the only light source in the universe to cast light on other planets.
+
+Star (Eleanor) is given size and x,y,z cordinates to translate the sphere. The star is made up of nested spheres with an inverse relationship of size and opacity. With the orbit function it orbits a point in the picture.
+
+TwinStars (Eleanor) inherits from Star and makes two objects. With the rotate function they orbit eachother.
 
