@@ -1,3 +1,5 @@
+/*
+
 //Bird p1;
 BirdButton b1;
 float Sling_x = 100;
@@ -7,11 +9,7 @@ float mass = 2.0;
 float gravity = 0.4;
 float friction = 0.995;
 boolean b1Pressed = false;
-void setup(){
-  size(500,500);
-  b1 = new BirdButton(100,300,50,mass);
-}
-  
+
 void draw(){
   background(255);
   if(b1Pressed == false&dist(mouseX,mouseY, Sling_x,Sling_y) < Sling_len ){
@@ -33,3 +31,5 @@ void mousePressed(){
     if (b1.isPressed()) {
       b1Pressed = true;
     }}
+    
+    */

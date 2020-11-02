@@ -27,8 +27,6 @@ class Slingshot {
   }
   
   void shape(){
-    if (mousePressed){
       x = mouseX;
-    }
   }
 }
