@@ -2,6 +2,7 @@ boolean collide = false;
 Environment[] top = new Environment[6];
 Environment[] bottom = new Environment[5];
 Ball ball;
+Slingshot s;
 
 void setup(){
   
@@ -15,6 +16,7 @@ void setup(){
   }
   
   ball = new Ball(100, 250, 15, 15);
+  s = new Slingshot(50,100);
   
 }
 
@@ -27,4 +29,7 @@ void draw(){
     r.display();
   } 
   ball.display();
+  s.force();
+  s.display();
+  s.shape();
 }
