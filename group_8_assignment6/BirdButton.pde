@@ -7,7 +7,7 @@ class BirdButton extends Button {
  float sx;
  float sy;
  float slen;
-
+ float elastic_potential;
  BirdButton(float _x, float _y, float _r, float _m) {
  x = _x;
  y = _y;
@@ -45,8 +45,9 @@ if (y > (height - r)) {
  x = mx;
  y = my;
  }
- //set up inital velocity of bird
- void init_vel(float mx, float my, float sx, float sy,float slen){
- vx = 40/slen*(sx-mx)/m;
- vy = 40/slen*(sy-my)/m;
+ //set up inital velocity of bird based on the position of bird, length and elastic 
+ //potential of the slingshot
+ void init_vel(float mx, float my, float sx, float sy,float slen,float elastic_potential){
+ vx = elastic_potential/slen*(sx-mx)/m;
+ vy = elastic_potential/slen*(sy-my)/m;
  }}
