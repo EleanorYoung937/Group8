@@ -1,11 +1,11 @@
 //Bird p1;
 BirdButton b1;
-float Sling_x = 100;
-float Sling_y = 300;
+float Sling_x = 60;
+float Sling_y = 250;
 float Sling_len = 100;
 float mass = 2.0;
-float gravity = 0.09;
-float friction = 0.3;
+float gravity = 0.4;
+float friction = 0.998;
 boolean b1Pressed = false;
 
 boolean collide = false;
@@ -15,7 +15,7 @@ Environment[] bottom = new Environment[5];
 Slingshot s;
 
 void setup(){
-  
+  frameRate(30);
   size(500, 500);
   
   for (int i = 0; i < top.length; i++){
@@ -45,23 +45,28 @@ void draw(){
   } 
   //ball.display();
   s.display();
+  //if mouse not click, bird will move with mouse while mouse within the area of 
+  //slingshot, and initial velocity will be set corresponding to position.
   if(b1Pressed == false&dist(mouseX,mouseY, Sling_x,Sling_y) < Sling_len ){
      b1.update(mouseX,mouseY); 
      b1.init_vel(mouseX, mouseY, Sling_x, Sling_y,Sling_len);
      b1.over(true);
      s.update(mouseX,mouseY);}
+  //if mouse pressed, the bird being ;aunched and will follow physical rules.
   else if(b1Pressed){
      b1.applyForces(friction,gravity);
+     //println(b1.y);
      s.force();
   
    }
+  //if mouse not pressed and not within correct area, the bird moves to a default position
   else{
   b1.over(false);
   b1.update(Sling_x,Sling_y);}
   b1.display();
-  println(b1.vx);
+  //println(b1.vx);
 }
-
+// change the status of mouse pressed or not
 void mousePressed(){
     if (b1.isPressed()) {
       b1Pressed = true;
