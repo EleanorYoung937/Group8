@@ -8,7 +8,9 @@ class Slingshot {
   float ry;
   float ks = 0.5; 
   float kd = 0.5;
-
+  float mx;
+  float my;
+ 
   Slingshot(float _m, float _rx, float _ry) {
     this.m = _m;
     this.rx = _rx;
@@ -35,10 +37,9 @@ class Slingshot {
     line(60,300,60,350);
   }
   
-  void shape(){
-    if (mousePressed){
-      x = mouseX;
-      y = mouseY;
+  
+  void update(float mx, float my){
+      x = mx;
+      y = my;
     }
-  }
 }
