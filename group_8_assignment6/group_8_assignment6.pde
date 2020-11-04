@@ -11,7 +11,7 @@ boolean b1Pressed = false;
 boolean collide = false;
 Environment[] top = new Environment[6];
 Environment[] bottom = new Environment[5];
-Ball ball;
+//Ball ball;
 Slingshot s;
 
 void setup(){
@@ -25,7 +25,7 @@ void setup(){
     bottom[i] = new Environment(250 + i*50, 449 - (i * 10 / 2), 20, 100 + (i * 10), bottom, i);
   }
   
-  ball = new Ball(100, 250, 15, 15);
+  //ball = new Ball(100, 250, 15, 15);
   s = new Slingshot(50,100);
   b1 = new BirdButton(100,300,50,mass);
   
@@ -35,11 +35,13 @@ void draw(){
   background(255);
   for (Environment r : top){
     r.display();
+    r.collision(b1);
   }
   for (Environment r : bottom){
     r.display();
+    r.collision(b1);
   } 
-  ball.display();
+  //ball.display();
   s.force();
   s.display();
   if(b1Pressed == false&dist(mouseX,mouseY, Sling_x,Sling_y) < Sling_len ){
