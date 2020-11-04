@@ -3,6 +3,7 @@ BirdButton b1;
 float Sling_x = 60;
 float Sling_y = 250;
 float Sling_len = 100;
+float elastic_potential = 60;
 float mass = 2.0;
 float gravity = 0.4;
 float friction = 0.998;
@@ -26,7 +27,7 @@ void setup(){
   }
   
   //ball = new Ball(100, 250, 15, 15);
-  s = new Slingshot(60,100,200);
+  s = new Slingshot(elastic_potential,100,200);
   b1 = new BirdButton(100,300,50,mass);
   
 }
@@ -49,7 +50,7 @@ void draw(){
   //slingshot, and initial velocity will be set corresponding to position.
   if(b1Pressed == false&dist(mouseX,mouseY, Sling_x,Sling_y) < Sling_len ){
      b1.update(mouseX,mouseY); 
-     b1.init_vel(mouseX, mouseY, Sling_x, Sling_y,Sling_len);
+     b1.init_vel(mouseX, mouseY, Sling_x, Sling_y,Sling_len,elastic_potential);
      b1.over(true);
      s.update(mouseX,mouseY);}
   //if mouse pressed, the bird being ;aunched and will follow physical rules.
