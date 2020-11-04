@@ -26,7 +26,7 @@ void setup(){
   }
   
   //ball = new Ball(100, 250, 15, 15);
-  s = new Slingshot(50,100);
+  s = new Slingshot(60,100);
   b1 = new BirdButton(100,300,50,mass);
   
 }
@@ -44,6 +44,7 @@ void draw(){
   //ball.display();
   s.force();
   s.display();
+  s.shape();
   if(b1Pressed == false&dist(mouseX,mouseY, Sling_x,Sling_y) < Sling_len ){
      b1.update(mouseX,mouseY); 
      b1.init_vel(mouseX, mouseY, Sling_x, Sling_y,Sling_len);
