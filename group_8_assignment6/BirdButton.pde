@@ -27,15 +27,28 @@ vx *= ax;
 vy += ay;
 x += vx;
 y += vy;
-if (y > (height - r/2)) {
+if (y > (height - r)) {
  vy = -vy*0.7;
  vx = vx*0.7;
- y = height -r/2;
+ y = height -r;
  }
 
 }
  void display() {
+ fill(color(255,0,0));
  ellipse(x, y, r, r);
+ pushMatrix();
+ translate(x, y);
+  //rotate(-PI/12);
+  fill(0);
+  arc(20, -10, 20, 20, 0, PI);
+  arc(0, -10, 20, 20, 0, PI);
+  rotate(PI);
+  fill(color(255,255,0));
+  arc(-35,-13,40,40,0,PI/8);
+  
+  popMatrix();
+  fill(255);
  }
  //check whetehr mouse is over the bird.
  void over(boolean isMouseOver){
