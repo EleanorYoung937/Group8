@@ -26,7 +26,7 @@ void setup(){
   }
   
   //ball = new Ball(100, 250, 15, 15);
-  s = new Slingshot(60,100);
+  s = new Slingshot(60,100,200);
   b1 = new BirdButton(100,300,50,mass);
   
 }
