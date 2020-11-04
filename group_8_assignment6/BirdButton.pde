@@ -27,10 +27,10 @@ vx *= ax;
 vy += ay;
 x += vx;
 y += vy;
-if (y > (height - r)) {
+if (y > (height - r/2)) {
  vy = -vy*0.7;
  vx = vx*0.7;
- y = height -r;
+ y = height -r/2;
  }
 
 }
