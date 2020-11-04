@@ -5,7 +5,7 @@ float Sling_y = 300;
 float Sling_len = 100;
 float mass = 2.0;
 float gravity = 0.09;
-float friction = 0.998;
+float friction = 0.3;
 boolean b1Pressed = false;
 
 boolean collide = false;
