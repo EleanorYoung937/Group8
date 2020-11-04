@@ -20,13 +20,15 @@ class Slingshot {
   }
   
   void display(){
-    bezier(x+10,200,x-30,200,x-30,250,x-10,250);
-    line(x+10,200,x,300);
-    line(x-10,250,x,300);
-    line(x,300,x,350);
+    bezier(70,200,x-30,200,x-30,250,50,250);
+    line(70,200,60,300);
+    line(50,250,60,300);
+    line(60,300,60,350);
   }
   
   void shape(){
+    if (mousePressed){
       x = mouseX;
+    }
   }
 }
