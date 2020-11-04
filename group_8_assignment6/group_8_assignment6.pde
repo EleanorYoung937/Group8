@@ -4,8 +4,8 @@ float Sling_x = 100;
 float Sling_y = 300;
 float Sling_len = 100;
 float mass = 2.0;
-float gravity = 0.4;
-float friction = 0.995;
+float gravity = 0.09;
+float friction = 0.998;
 boolean b1Pressed = false;
 
 boolean collide = false;
@@ -36,22 +36,24 @@ void draw(){
   for (Environment r : top){
     r.display();
     r.collision(b1);
+    r.move();
   }
   for (Environment r : bottom){
     r.display();
     r.collision(b1);
+    r.move();
   } 
   //ball.display();
-  s.force();
   s.display();
-  s.shape();
   if(b1Pressed == false&dist(mouseX,mouseY, Sling_x,Sling_y) < Sling_len ){
      b1.update(mouseX,mouseY); 
      b1.init_vel(mouseX, mouseY, Sling_x, Sling_y,Sling_len);
-     b1.over(true);}
+     b1.over(true);
+     s.update(mouseX,mouseY);}
   else if(b1Pressed){
      b1.applyForces(friction,gravity);
-     
+     s.force();
+  
    }
   else{
   b1.over(false);
@@ -64,5 +66,4 @@ void mousePressed(){
     if (b1.isPressed()) {
       b1Pressed = true;
     }
-    s.shape();
 }
