@@ -19,8 +19,10 @@ class Box{
   }
   
   void display(){
+    fill(0,255,0);
     rectMode(CENTER);
     rect(x, y, w, h);
+    noFill();
   }
   
   void move(){

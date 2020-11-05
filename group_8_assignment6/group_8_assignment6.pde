@@ -33,7 +33,7 @@ void setup(){
 }
 
 void draw(){
-  background(255);
+  background(200, 200, 255);
   for (Environment r : top){
     r.display();
     r.collision(b1);
