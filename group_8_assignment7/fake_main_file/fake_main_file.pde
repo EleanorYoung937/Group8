@@ -1,4 +1,6 @@
 Aircraft A1;
+display_life dl;
+
 ArrayList<Bullet> shoot;
 float v = 1;
 float num = 1;
@@ -7,11 +9,13 @@ void setup(){
   size(1000,1000);
   frameRate(60);
   A1 = new Aircraft(500,500);
+  dl = new display_life(850,50,100);
   shoot = new ArrayList<Bullet>();
 }
 
 void draw(){
   background(255);
+  dl.display();
   keyPressed();
   keyReleased();
   A1.display();
