@@ -6,7 +6,7 @@ class Invader{
  int resistance;
  float velocity;
  
- float acceleration = 1/10;
+ float acceleration = 1/20;
  boolean landed = false;
  boolean killed = false;
  

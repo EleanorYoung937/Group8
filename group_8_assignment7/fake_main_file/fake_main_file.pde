@@ -24,9 +24,9 @@ void setup(){
     float h = random(w - 30, w + 50);
     float x = random(w, width - w);
     int r = int(random(1,3));
-    float v = random(1/10, 3);
+    float v = random(1/10, 1.5);
     invaders[i] = new Invader(x, - h/2, w, h, r, v);
-    println(x, - h/2, w, h, r, v);
+    //println(x, - h/2, w, h, r, v);
   }
   
 }
@@ -38,13 +38,13 @@ void draw(){
   if (millis() > nextTimer){
     nextTimer = millis() + delay;
     idx ++;
-    println(idx);
+    //println(idx);
   }
   
   //invaders[0].display();
   for(int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++){
     invaders[i].display();
-    println(invaders[i].x);
+    //println(invaders[i].x);
   }
   
   dl.display();
