@@ -6,12 +6,19 @@ class Invader{
  int resistance;
  float velocity;
  
- float acceleration = 5;
+ float acceleration = 1/10;
  boolean landed = false;
  boolean killed = false;
  
  //vectors of additional x and y movements and chose from them at random
- int[] move = {0,0,0,0,0,20,-2,4,17,-60,-20,8,9,9,0,0,3,7,7,42, -75,66,88,32,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+ int[] move = {100,-100,50,20,-20,20,-40,40,17,-17,-6,-20,8,9,9,30,-30,-7,7,4,-7,6,8,30,-17,
+ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
 
  
  Invader(float _x, float _y, float w, float h, int r, float v){
@@ -36,11 +43,11 @@ class Invader{
      //invaders in the air speed up due to gravity
      if (landed == false){
        velocity += acceleration;
-       x += velocity;
+       y += velocity;
        int i = int(random(move.length));
        int j = int(random(move.length));
        x = constrain ( x + move[i], 0, width);
-       y = constrain ( y + move[j], 0, height);
+       //y = constrain ( y + move[j], 0, height);
      }
      
     fill(0);
@@ -59,7 +66,7 @@ class Invader{
    }
  }
 
-  void shotornot(int bx, int by, int br){
+  void shotornot(float bx, float by, float br){
     
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
     if(bx > x && bx < x + wid && by > y && by < y + hig){
