@@ -26,9 +26,8 @@ class Invader{
  void display() {
    
    //landed invaders are safe from bullets
-   if (y + hig/2 == height){
+   if (y + hig/2 == height && killed == false){
      landed = true;
-     killed = true;
    }
    
    //alive invaders are displayed
