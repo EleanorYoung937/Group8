@@ -1,28 +1,53 @@
 Aircraft A1;
 display_life dl;
-Lives[] player_lives = new Lives[3] ;
-Invader[] invaders = new Invader[10];
+Lives[] player_lives;
+Invader[] invaders;
 ArrayList<Bullet> shoot;
-
-int shotCount = 0;
-int landCount = 3;
+ArrayList<Bullet> shoot2;
+ArrayList<Bullet> shoot3;
+ArrayList<Bullet> shoot4;
+Bullet boom;
+boolean boomUsed;
+boolean boomEnded = false;
+boolean paused = false;
+boolean gameOver;
+int shotCount;
+int landCount;
 boolean [] life = {true, true, true};
 
-float v = 2;
-float num = 1;
-float time =0;
-int idx = -1;
-int delay = 5000;
+float v ;
+float num ;
+float time ;
+float time2 ;
+int rate;
+int idx ;
+int delay;
 int nextTimer;
 
 void setup() {
-
+  rate = 60;
   size(1000, 1000);
-  frameRate(60);
+  frameRate(rate);
+  gameOver = false;
+  boomUsed = false;
+  v = 2;
+  num = 1;
+  time =0;
+  time2 = 0;
+  idx = -1;
+  delay = 5000;
+  player_lives = new Lives[3] ;
+  invaders = new Invader[10];
   A1 = new Aircraft(500, 500);
   dl = new display_life(850, 50, 100);
+  //4 kinds of shooting methods and 1 boom. 
   shoot = new ArrayList<Bullet>();
-
+  shoot2 = new ArrayList<Bullet>();
+  shoot3 = new ArrayList<Bullet>();
+  shoot4 = new ArrayList<Bullet>();
+  boom = new Bullet(10, A1.x, A1.y);
+  landCount = 3;
+  shotCount = 0;
   for (int i = 0; i < invaders.length; i++) {
     //Invader(float _x, float _y, float w, float h, int r, float v)
     float w = random(40, 100);
@@ -43,7 +68,14 @@ void setup() {
 void draw() {
 
   background(255);
-
+  textAlign(CENTER);
+  fill(0);
+  textSize(20);
+  int s = rate/60;
+  text("Speed:"+s+'x',900,130);
+  textAlign(LEFT);
+  textSize(12);
+  fill(255);
   if (millis() > nextTimer) {
     nextTimer = millis() + delay;
     idx ++;
@@ -76,8 +108,26 @@ void draw() {
   for (int i=0; i<shoot.size(); i++) {
     Bullet bi = shoot.get(i);
     bi.display();
+    if (bi.y< -20){shoot.remove(bi);}
   }
-
+  for (int i=0; i<shoot2.size(); i++) {
+    Bullet bi = shoot2.get(i);
+    bi.display2();
+    if (bi.y< -20){shoot2.remove(bi);}
+  }
+  for (int i=0; i<shoot3.size(); i++) {
+    Bullet bi = shoot3.get(i);
+    bi.display3();
+    if (bi.y< -20){shoot3.remove(bi);}
+  }
+  for (int i=0; i<shoot4.size(); i++) {
+    Bullet bi = shoot4.get(i);
+    bi.display4();
+    if (bi.y< -20){shoot4.remove(bi);}
+  }
+  if (boomUsed == true &boomEnded ==false){
+        boomEnded = boom.boom(boomEnded);
+       }
   shotCount = 0;
   landCount = 3;
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
@@ -89,9 +139,26 @@ void draw() {
     } 
     if (invaders[i].landed == true) {
       landCount -= 1;
-      life[landCount] = false;
     }
   }
+  if (paused ==true){
+    textAlign(CENTER);
+    fill(0);
+    textSize(30);
+    text("Press r to resume",500,500);
+    text("Press q to quit", 500,600);
+    fill(255);
+    noLoop();}
+  if (landCount ==0){  
+    gameOver = true;
+    textAlign(CENTER);
+    fill(0);
+    textSize(30);
+    text("Press r to restart",500,500);
+    text("Press q to quit", 500,600);
+    fill(255);
+    setup();
+    noLoop();}
 }
 
   void keyPressed() {
@@ -108,14 +175,50 @@ void draw() {
     if (keyPressed &keyCode == DOWN) {
       A1.move(0, v);
     }
-    if (keyPressed & (key == 'z' || key == 'Z')&millis()-time >100) {
+    //press z to fire with mode 1
+    if (keyPressed & (key == 'z' || key == 'Z')&millis()-time >50) {
 
       Bullet b = new Bullet(10, A1.x, A1.y);
       shoot.add(b);
       time = millis();
     }
-  }
+    //press x to fire with mode 2
+    if (keyPressed & (key == 'x' || key == 'X')&millis()-time2 >100) {
+      Bullet b = new Bullet(10, A1.x, A1.y);
+      shoot2.add(b);
+      time2 = millis();
+    }
+    //press c to fire with mode 3
+    if (keyPressed & (key == 'c' || key == 'C')&millis()-time >50) {
 
+      Bullet b = new Bullet(10, A1.x, A1.y);
+      shoot3.add(b);
+      time = millis();
+    }
+    //press v to fire with mode 4
+    if (keyPressed & (key == 'v' || key == 'V')&millis()-time2 >100) {
+      Bullet b = new Bullet(10, A1.x, A1.y);
+      shoot4.add(b);
+      time2 = millis();
+    }
+    //press b to cast boom
+    if (key == 'b' || key == 'B'){
+      boomUsed = true;}
+    
+    if (key == 't'|| key == 'T'){
+      paused = true;
+      }
+    if (key == 'r'|| key == 'R'){
+      paused = false;
+      gameOver = false;
+      loop();}
+    if (paused == true &(key == 'q'|| key == 'Q')){
+      exit();}
+    if (keyPressed &(key == 's'|| key == 'S')){
+      rate = (rate+60) %240;
+      if (rate==0){rate = 60;}
+      frameRate(rate);}
+      }
   void keyReleased() {
     A1.move(0, 0);
   }
