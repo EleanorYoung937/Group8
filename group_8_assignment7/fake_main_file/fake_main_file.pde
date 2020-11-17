@@ -31,6 +31,7 @@ void setup() {
   println("Press 'b' for one time use of bomb to clear whole screen.");
   println("Press 'p' to pause the game"); 
   println("Press 's' to change speed");
+  println("Press 't' to screenshot");
   
   rate = 60;
   size(1000, 1000);
@@ -87,7 +88,6 @@ void draw() {
   if (millis() > nextTimer) {
     nextTimer = millis() + delay;
     idx ++;
-    saveFrame();
     //println(idx);
   }
 
@@ -229,9 +229,12 @@ void draw() {
     if (key == 'b' || key == 'B'){
       boomUsed = true;}
     
-    if (key == 't'|| key == 'T'){
+    if (key == 'p'|| key == 'P'){
       paused = true;
       }
+    if (key == 't'|| key == 'T'){
+      saveFrame();
+    }
     if (key == 'r'|| key == 'R'){
       paused = false;
       gameOver = false;
