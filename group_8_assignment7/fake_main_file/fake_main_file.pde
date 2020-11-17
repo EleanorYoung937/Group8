@@ -9,10 +9,11 @@ float time =0;
 int idx = -1;
 int delay = 5000;
 int nextTimer;
+int shotCount;
 
 void setup(){
   
-  size(1000,1000);
+  size(500,500);
   frameRate(60);
   A1 = new Aircraft(500,500);
   dl = new display_life(850,50,100);
@@ -56,12 +57,18 @@ void draw(){
     Bullet bi = shoot.get(i);
     bi.display();}
   
+  shotCount = 0;
   for(int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++){
     for (Bullet b: shoot){
       invaders[i].shotornot(b.x, b.y, b.r);
     }
-
+    if (invaders[i].landed == true){
+      shotCount += 1;
+    }
   }
+  
+  println(shotCount);
+  
 }
 
 void keyPressed(){

@@ -6,7 +6,7 @@ class Invader{
  int resistance;
  float velocity;
  
- float acceleration = 1/20;
+ float acceleration = 1/10;
  boolean landed = false;
  boolean killed = false;
  
@@ -33,8 +33,10 @@ class Invader{
  void display() {
    
    //landed invaders are safe from bullets
-   if (y + hig/2 == height && killed == false){
+   if (y + hig/2 >= height && killed == false){
      landed = true;
+     velocity = 0;
+     acceleration = 0;
    }
    
    //alive invaders are displayed
@@ -69,9 +71,11 @@ class Invader{
   void shotornot(float bx, float by, float br){
     
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
-    if(bx > x && bx < x + wid && by > y && by < y + hig){
+    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
       //the point is inside the rectangle
       killed = true;
+      velocity = 0;
+      acceleration = 0;
     }
   }
   
