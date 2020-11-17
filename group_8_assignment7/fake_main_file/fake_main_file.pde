@@ -43,9 +43,9 @@ void setup() {
   time =0;
   time2 = 0;
   idx = -1;
-  delay = 5000;
+  delay = 2500;
   player_lives = new Lives[3] ;
-  invaders = new Invader[10];
+  invaders = new Invader[30];
   A1 = new Aircraft(500, 500);
   dl = new display_life(850, 50, 100);
   //4 kinds of shooting methods and 1 boom. 
@@ -59,11 +59,11 @@ void setup() {
   //shotCount = 0;
   for (int i = 0; i < invaders.length; i++) {
     //Invader(float _x, float _y, float w, float h, int r, float v)
-    float w = random(40, 100);
-    float h = random(w - 30, w + 50);
+    float w = random(20, 100);
+    float h = random(w - 10, w + 40);
     float x = random(w, width - w);
     int r = int(random(1, 3));
-    float v = random(1/10, 1.5);
+    float v = random(1/10, 2);
     invaders[i] = new Invader(x, - h/2, w, h, r, v);
     //println(x, - h/2, w, h, r, v);
   }
@@ -126,12 +126,26 @@ void draw() {
   }
   if (boomUsed == true &boomEnded ==false){
         boomEnded = boom.boom(boomEnded);
+        for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
+          if (invaders[i].landed == false && invaders[i].killed == false){
+            invaders[i].wiped = true;
+          }
+        }
        }
   
   shotCount = 0;
   landCount = 3;
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
     for (Bullet b : shoot) {
+      invaders[i].shotornot(b.x, b.y, b.r);
+    }
+    for (Bullet b : shoot2) {
+      invaders[i].shotornot2(b.x, b.y, b.r);
+    }
+    for (Bullet b : shoot3) {
+      invaders[i].shotornot(b.x, b.y, b.r);
+    }
+    for (Bullet b : shoot4) {
       invaders[i].shotornot(b.x, b.y, b.r);
     }
    if (invaders[i].killed == true) {

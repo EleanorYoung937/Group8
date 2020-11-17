@@ -9,6 +9,7 @@ class Invader{
  float acceleration = 1/10;
  boolean landed = false;
  boolean killed = false;
+ boolean wiped = false;
  
  //vectors of additional x and y movements and chose from them at random
  int[] move = {100,-100,50,20,-20,20,-40,40,17,-17,-6,-20,8,9,9,30,-30,-7,7,4,-7,6,8,30,-17,
@@ -31,14 +32,14 @@ class Invader{
  void display() {
    
    //landed invaders are safe from bullets
-   if (y + hig/2 >= height && killed == false){
+   if (y + hig/2 >= height && killed == false && wiped == false){
      landed = true;
      velocity = 0;
      acceleration = 0;
    }
    
    //alive invaders are displayed
-   if (killed == false){
+   if (killed == false && wiped == false){
      
      //invaders in the air speed up due to gravity
      if (landed == false){
@@ -69,7 +70,7 @@ class Invader{
 
   void shotornot(float bx, float by, float br) {
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
-    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
+    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
       killed = true;
       velocity = 0;
@@ -80,14 +81,14 @@ class Invader{
     void shotornot2(float bx, float by, float br) {
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
     bx += 25;
-    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
+    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
       killed = true;
       velocity = 0;
       acceleration = 0;
     }
     bx -= 50;
-    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
+    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
       killed = true;
       velocity = 0;
