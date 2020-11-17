@@ -87,6 +87,7 @@ void draw() {
   if (millis() > nextTimer) {
     nextTimer = millis() + delay;
     idx ++;
+    saveFrame();
     //println(idx);
   }
 
@@ -244,8 +245,6 @@ void draw() {
       rate = (rate+60) %240;
       if (rate==0){rate = 60;}
       frameRate(rate);}
-      
-    saveFrame();
 }
       
   void keyReleased() {
