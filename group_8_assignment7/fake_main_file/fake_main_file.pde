@@ -79,6 +79,7 @@ void draw() {
   }
 
   shotCount = 0;
+  landCount = 0;
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
     for (Bullet b : shoot) {
       invaders[i].shotornot(b.x, b.y, b.r);
