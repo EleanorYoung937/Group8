@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Invader{
  float x;
  float y;
@@ -19,22 +18,7 @@ class Invader{
  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-=======
-class Invader {
-  float x;
-  float y;
-  float wid;
-  float hig;
-  int resistance;
-  float velocity;
->>>>>>> 81a62dea8d8e0750519f8e237ef2cf15bf00fef9
 
-  float acceleration = 1/20;
-  boolean landed = false;
-  boolean killed = false;
-
-<<<<<<< HEAD
- 
  Invader(float _x, float _y, float w, float h, int r, float v){
    x = _x;
    y = _y;
@@ -66,6 +50,7 @@ class Invader {
        //y = constrain ( y + move[j], 0, height);
      }
      
+    stroke(0);
     fill(0);
     rect(x - wid/2, y,wid,hig/2); //body
     
@@ -81,72 +66,10 @@ class Invader {
     line(x - wid/18, y + hig/4, x + wid/18, y + hig/4);
    }
  }
-=======
-  //vectors of additional x and y movements and chose from them at random
-  int[] move = {100, -100, 50, 20, -20, 20, -40, 40, 17, -17, -6, -20, 8, 9, 9, 30, -30, -7, 7, 4, -7, 6, 8, 30, -17, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-
-
-  Invader(float _x, float _y, float w, float h, int r, float v) {
-    x = _x;
-    y = _y;
-    wid = w;
-    hig = h;
-    resistance = r;
-    velocity = v;
-  }
-
-  void display() {
-
-    //landed invaders are safe from bullets
-    if (y + hig/2 == height && killed == false) {
-      landed = true;
-    }
-
-    //alive invaders are displayed
-    if (killed == false) {
-
-      //invaders in the air speed up due to gravity
-      if (landed == false) {
-        velocity += acceleration;
-        y += velocity;
-        int i = int(random(move.length));
-        int j = int(random(move.length));
-        x = constrain ( x + move[i], 0, width);
-        //y = constrain ( y + move[j], 0, height);
-      }
-
-      fill(0);
-      rect(x - wid/2, y, wid, hig/2); //body
-
-      fill(57, 255, 20);
-      ellipse(x, y, wid, hig);  //Head
-
-
-      fill(0);
-      line(x - wid/3, y - hig/7, x - wid/9, y + hig/14);    //Right Eye
-      bezier(x - wid/3, y - hig/7, x - wid/3 - wid/9, y + hig/14, x - wid/9, y + hig/14, x - wid/9, y + hig/14); 
-      line(x + wid/3, y - hig/7, x + wid/9, y + hig/14);   //Left Eye
-      bezier(x + wid/3, y - hig/7, x + wid/3 + wid/9, y + hig/14, x + wid/9, y + hig/14, x + wid/9, y + hig/14); 
-      line(x - wid/18, y + hig/4, x + wid/18, y + hig/4);
-    }
-  }
 
   void shotornot(float bx, float by, float br) {
->>>>>>> 81a62dea8d8e0750519f8e237ef2cf15bf00fef9
-
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
-<<<<<<< HEAD
     if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
-=======
-    if (bx > x && bx < x + wid && by > y && by < y + hig) {
->>>>>>> 81a62dea8d8e0750519f8e237ef2cf15bf00fef9
       //the point is inside the rectangle
       killed = true;
       velocity = 0;

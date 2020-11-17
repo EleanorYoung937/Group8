@@ -12,7 +12,6 @@ float time =0;
 int idx = -1;
 int delay = 5000;
 int nextTimer;
-int shotCount;
 
 void setup(){
   
@@ -76,14 +75,9 @@ void draw(){
     for (Bullet b: shoot){
       invaders[i].shotornot(b.x, b.y, b.r);
     }
-<<<<<<< HEAD
     if (invaders[i].landed == true){
       shotCount += 1;
     }
-=======
-    
-
->>>>>>> 81a62dea8d8e0750519f8e237ef2cf15bf00fef9
   }
   
   println(shotCount);
