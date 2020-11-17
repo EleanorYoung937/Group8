@@ -9,8 +9,8 @@ class Aircraft {
     y = _y;
   }
 
-  //Let bird follow gravity, and bounce after hitting ground. But it won't bounce 
-  //back if fly out of the canvas from other direction as real game does.
+  //aircraft can move with given step and directions.
+  //it cannot move outside the screen.
   void move(float vx, float vy) {
     x += vx;
     y += vy;
@@ -30,11 +30,38 @@ class Aircraft {
 
   void display() {
     fill(color(255, 0, 0));
-    ellipse(x, y, r, r);
     pushMatrix();
     translate(x, y);
-    triangle(0, -30, -10, -10, 10, -10); 
-
+    //main body with ring and shooting system
+    ellipse(0, 0, 2*r, 2*r);
+    fill(color(0,0,255));
+    ellipse(25, -20, r, r);
+    ellipse(-25, -20, r, r);
+    fill(color(255,255,0));
+    ellipse(0, -20, 3*r, r);
+    fill(255);
+    ellipse(0, -20, 2*r, 2*r/3);
+    //triangle(0, -30, -10, -10, 10, -10); 
+    //left wing
+    fill(color(51,153,255));
+    triangle(-20, -5, -40, -25, -33,-10); 
+    beginShape();
+    vertex(-20,0); 
+    vertex(-33,-5);
+    vertex(-40,0);
+    vertex(-33,5);
+    endShape();
+    triangle(-20, 5, -40, 25, -33,10);
+    //right wing
+    
+    triangle(20, -5, 40, -25, 33,-10); 
+    beginShape();
+    vertex(20,0); 
+    vertex(33,-5);
+    vertex(40,0);
+    vertex(33,5);
+    endShape();
+    triangle(20, 5, 40, 25, 33,10);
     popMatrix();
     fill(255);
   }
