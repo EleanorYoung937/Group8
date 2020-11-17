@@ -221,6 +221,9 @@ void draw() {
     if (key == 'r'|| key == 'R'){
       paused = false;
       gameOver = false;
+      life[0] = true;
+      life[1] = true;
+      life[2] = true;
       loop();}
     if (paused == true &(key == 'q'|| key == 'Q')){
       exit();}
