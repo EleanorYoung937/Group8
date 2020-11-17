@@ -10,8 +10,9 @@ class Lives {
     y = _y;
     r = _r;
   }
-
-  void display() {
+  
+  
+  void display(boolean survived) {
     noStroke();
     fill(alive);
     ellipse(x, y, r, r);
@@ -21,3 +22,4 @@ class Lives {
     }
   }
 }
+  

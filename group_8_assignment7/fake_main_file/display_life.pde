@@ -10,6 +10,7 @@ class display_life {
   }
 
   void display() {
+    fill(0);
     rect(x, y, r, r/2);
     fill(255);
     text("lives remaining", 855, 70);
