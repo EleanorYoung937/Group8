@@ -31,7 +31,7 @@ void setup() {
   println("Press 'b' for one time use of bomb to clear whole screen.");
   println("Press 'p' to pause the game"); 
   println("Press 's' to change speed");
-  println("Press 't' to change speed");
+  println("Press 't' to screenshot");
   
   rate = 60;
   size(1000, 1000);
