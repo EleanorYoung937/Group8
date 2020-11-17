@@ -76,4 +76,22 @@ class Invader{
       acceleration = 0;
     }
   }
+  
+    void shotornot2(float bx, float by, float br) {
+    // adapted from https://happycoding.io/tutorials/processing/collision-detection
+    bx += 25;
+    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
+      //the point is inside the rectangle
+      killed = true;
+      velocity = 0;
+      acceleration = 0;
+    }
+    bx -= 50;
+    if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false){
+      //the point is inside the rectangle
+      killed = true;
+      velocity = 0;
+      acceleration = 0;
+    }
+  }
 }
