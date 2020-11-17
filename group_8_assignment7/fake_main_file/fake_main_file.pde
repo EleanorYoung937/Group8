@@ -30,6 +30,7 @@ void setup() {
   println("Press 'z' 'x' 'c' 'v' to change shooting mode.");
   println("Press 'b' for one time use of bomb to clear whole screen.");
   println("Press 'p' to pause the game"); 
+  println("Press 's' to change speed");
   
   rate = 60;
   size(1000, 1000);
@@ -86,6 +87,7 @@ void draw() {
   if (millis() > nextTimer) {
     nextTimer = millis() + delay;
     idx ++;
+    saveFrame();
     //println(idx);
   }
 
@@ -100,11 +102,6 @@ void draw() {
 
   dl.display();
   dl.progress(shotCount);
-
-  //for  (int x = 0; x < player_lives.length; x ++) {
-  //  boolean current = life[x];
-  //  player_lives[x].display(current);
-  //}
 
   A1.display();
   for (int i=0; i<shoot.size(); i++) {
@@ -164,6 +161,23 @@ void draw() {
     textAlign(CENTER);
     fill(0);
     textSize(30);
+    fill(255,50,50);
+    text("GAME OVER", 500, 400);
+    fill(0);
+    text("Press r to restart",500,500);
+    text("Press q to quit", 500,600);
+    fill(255);
+    setup();
+    noLoop();}
+    
+  if (shotCount == 10){  
+    gameOver = true;
+    textAlign(CENTER);
+    fill(0);
+    textSize(30);
+    fill(255,50,50);
+    text("YOU WIN!", 500, 400);
+    fill(0);
     text("Press r to restart",500,500);
     text("Press q to quit", 500,600);
     fill(255);
@@ -231,7 +245,7 @@ void draw() {
       rate = (rate+60) %240;
       if (rate==0){rate = 60;}
       frameRate(rate);}
-      }
+}
       
   void keyReleased() {
     A1.move(0, 0);
