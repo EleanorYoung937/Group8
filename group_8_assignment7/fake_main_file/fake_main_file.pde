@@ -79,7 +79,7 @@ void draw() {
   }
 
   shotCount = 0;
-  landCount = 0;
+  landCount = 3;
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
     for (Bullet b : shoot) {
       invaders[i].shotornot(b.x, b.y, b.r);
@@ -88,11 +88,10 @@ void draw() {
       shotCount += 1;
     } 
     if (invaders[i].landed == true) {
-      landCount += 1;
+      landCount -= 1;
       life[landCount] = false;
     }
   }
-  println(shotCount);
 }
 
   void keyPressed() {
