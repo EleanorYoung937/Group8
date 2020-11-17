@@ -11,8 +11,8 @@ boolean boomUsed;
 boolean boomEnded = false;
 boolean paused = false;
 boolean gameOver;
-int shotCount;
-int landCount;
+int shotCount = 3;
+int landCount = 0;
 boolean [] life = {true, true, true};
 
 float v ;
@@ -25,6 +25,12 @@ int delay;
 int nextTimer;
 
 void setup() {
+  println("Welcome to a galaxy far far away!");
+  println("Press arrow keys to move your aircraft in different directions.");
+  println("Press 'z' 'x' 'c' 'v' to change shooting mode.");
+  println("Press 'b' for one time use of bomb to clear whole screen.");
+  println("Press 'p' to pause the game"); 
+  
   rate = 60;
   size(1000, 1000);
   frameRate(rate);
@@ -46,8 +52,9 @@ void setup() {
   shoot3 = new ArrayList<Bullet>();
   shoot4 = new ArrayList<Bullet>();
   boom = new Bullet(10, A1.x, A1.y);
-  landCount = 3;
-  shotCount = 0;
+  
+  //landCount = 3;
+  //shotCount = 0;
   for (int i = 0; i < invaders.length; i++) {
     //Invader(float _x, float _y, float w, float h, int r, float v)
     float w = random(40, 100);
@@ -94,15 +101,10 @@ void draw() {
   dl.display();
   dl.progress(shotCount);
 
-  //for (Lives l : player_lives){
-  //  l.display();
-
+  //for  (int x = 0; x < player_lives.length; x ++) {
+  //  boolean current = life[x];
+  //  player_lives[x].display(current);
   //}
-
-  for  (int x = 0; x < player_lives.length; x ++) {
-    boolean current = life[x];
-    player_lives[x].display(current);
-  }
 
   A1.display();
   for (int i=0; i<shoot.size(); i++) {
@@ -128,6 +130,7 @@ void draw() {
   if (boomUsed == true &boomEnded ==false){
         boomEnded = boom.boom(boomEnded);
        }
+  
   shotCount = 0;
   landCount = 3;
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
@@ -139,8 +142,15 @@ void draw() {
     } 
     if (invaders[i].landed == true) {
       landCount -= 1;
+      life[landCount] = false;
     }
   }
+  
+  for  (int x = 0; x < player_lives.length; x ++) {
+    boolean current = life[x];
+    player_lives[x].display(current);
+  }
+  
   if (paused ==true){
     textAlign(CENTER);
     fill(0);
@@ -219,6 +229,7 @@ void draw() {
       if (rate==0){rate = 60;}
       frameRate(rate);}
       }
+      
   void keyReleased() {
     A1.move(0, 0);
   }
