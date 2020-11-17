@@ -1,9 +1,12 @@
 Aircraft A1;
 display_life dl;
+Lives[] player_lives = new Lives[3] ;
 Invader[] invaders = new Invader[10];
 ArrayList<Bullet> shoot;
 
-float v = 1;
+int shotCount = 0;
+
+float v = 2;
 float num = 1;
 float time =0;
 int idx = -1;
@@ -29,6 +32,11 @@ void setup(){
     //println(x, - h/2, w, h, r, v);
   }
   
+  for (int j = 0; j < player_lives.length; j++) {
+    int x = 875 + j * 25;
+    player_lives[j] = new Lives(x, 90, 10);
+  }
+  
 }
 
 void draw(){
@@ -47,9 +55,15 @@ void draw(){
     //println(invaders[i].x);
   }
   
-  dl.display();
   keyPressed();
   keyReleased();
+  
+  dl.display();
+  dl.progress(shotCount);
+  
+  for (Lives l : player_lives){
+    l.display();
+  }
 
   A1.display();
   for (int i=0;i<shoot.size();i++){
@@ -60,6 +74,7 @@ void draw(){
     for (Bullet b: shoot){
       invaders[i].shotornot(b.x, b.y, b.r);
     }
+    
 
   }
 }
