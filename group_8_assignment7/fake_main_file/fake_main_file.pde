@@ -10,7 +10,7 @@ Bullet boom;
 boolean boomUsed;
 boolean boomEnded;
 boolean paused = false;
-boolean gameOver;
+boolean gameOver= false;
 int shotCount = 3;
 int landCount = 0;
 boolean [] life = {true, true, true};
@@ -36,7 +36,6 @@ void setup() {
   rate = 60;
   size(1000, 1000);
   frameRate(rate);
-  gameOver = false;
   boomUsed = false;
   boomEnded = false;
   v = 2;
@@ -261,6 +260,8 @@ void draw() {
       life[2] = true;
       loop();}
     if (paused == true &(key == 'q'|| key == 'Q')){
+      exit();}
+    if (gameOver == true &(key == 'q'|| key == 'Q')){
       exit();}
     if (keyPressed &(key == 's'|| key == 'S')){
       rate = (rate+60) %240;
