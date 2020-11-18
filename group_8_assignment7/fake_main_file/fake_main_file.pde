@@ -8,7 +8,7 @@ ArrayList<Bullet> shoot3;
 ArrayList<Bullet> shoot4;
 Bullet boom;
 boolean boomUsed;
-boolean boomEnded = false;
+boolean boomEnded;
 boolean paused = false;
 boolean gameOver;
 int shotCount = 3;
@@ -38,6 +38,7 @@ void setup() {
   frameRate(rate);
   gameOver = false;
   boomUsed = false;
+  boomEnded = false;
   v = 2;
   num = 1;
   time =0;
@@ -135,6 +136,7 @@ void draw() {
   
   shotCount = 0;
   landCount = 3;
+  //display different kinds of bullets.
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
     for (Bullet b : shoot) {
       invaders[i].shotornot(b.x, b.y, b.r);
@@ -161,7 +163,7 @@ void draw() {
     boolean current = life[x];
     player_lives[x].display(current);
   }
-  
+  //pause condition and instructions on screen.
   if (paused ==true){
     textAlign(CENTER);
     fill(0);
@@ -170,6 +172,7 @@ void draw() {
     text("Press q to quit", 500,600);
     fill(255);
     noLoop();}
+   //check game over condition and set up again
   if (landCount ==0){  
     gameOver = true;
     textAlign(CENTER);
@@ -183,7 +186,8 @@ void draw() {
     fill(255);
     setup();
     noLoop();}
-    
+  
+  //check wining condition and set up again
   if (shotCount == 10){  
     gameOver = true;
     textAlign(CENTER);
