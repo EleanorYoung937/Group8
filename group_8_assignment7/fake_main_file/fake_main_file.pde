@@ -55,8 +55,6 @@ void setup() {
   shoot4 = new ArrayList<Bullet>();
   boom = new Bullet(10, A1.x, A1.y);
   
-  //landCount = 3;
-  //shotCount = 0;
   for (int i = 0; i < invaders.length; i++) {
     //Invader(float _x, float _y, float w, float h, int r, float v)
     float w = random(20, 100);
@@ -101,7 +99,6 @@ void draw() {
   keyReleased();
 
   dl.display();
-  dl.progress(shotCount);
 
   A1.display();
   for (int i=0; i<shoot.size(); i++) {
@@ -162,6 +159,8 @@ void draw() {
     boolean current = life[x];
     player_lives[x].display(current);
   }
+  
+  dl.progress(shotCount);
   //pause condition and instructions on screen.
   if (paused ==true){
     textAlign(CENTER);
