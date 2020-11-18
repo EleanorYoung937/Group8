@@ -1,0 +1,20 @@
+Click run to start the game.
+Press arrow keys to move your aircraft in different directions.
+Press 'z' 'x' 'c' 'v' to change shooting mode.
+Press 'b' for one time use of bomb to clear whole screen, but invadors cleared by this method will not be counted.
+Press 'p' to pause the game, and then press 'r' to restart or press 'q' to quit.
+Press 's' to change speed, there are choices of 1x, 2x and 3x the original speed.
+Press 't' to screenshot
+After shooting 10 invaders off, you win the game. Press 'r' to restart or press 'q' to quit.
+Each time a invader landed on the bottom of screen, your lives become 1 less. 
+After 3 invaders landing, you loss the game. Press 'r' to restart or press 'q' to quit.
+
+The Aircraft class has move method to control the moving of the aircraft, and display method to draw the aircraft of specific
+shape on the screen.
+The Bullet class has 5 display method, each one explains the projectory of one kind of bullet including the boom. This class
+extends from class Aircraft, so every bullet can shoot from the position of aircraft.
+The keyPressed method in main file contains many if conditions. All the press key performances were defined here.
+In the draw loop in main file, there are if conditions to judge wining, losing and pausing condition. If receiving true from
+global variables, the loop stop and corresponding text comes out.
+
+
