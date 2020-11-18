@@ -10,7 +10,7 @@ After shooting 10 invaders off, you win the game. Press 'r' to restart or press 
 Each time a invader landed on the bottom of screen, your lives become 1 less. 
 After 3 invaders landing, you loss the game. Press 'r' to restart or press 'q' to quit.
 
-
+Minghan:
 The Aircraft class has move method to control the moving of the aircraft, and display method to draw the aircraft of specific
 shape on the screen.
 The Bullet class has 5 display method, each one explains the projectory of one kind of bullet including the boom. This class
@@ -18,9 +18,10 @@ extends from class Aircraft, so every bullet can shoot from the position of airc
 The keyPressed method in main file contains many if conditions. All the press key performances were defined here.
 In the draw loop in main file, there are if conditions to judge wining, losing and pausing condition. If receiving true from
 global variables, the loop stop and corresponding text comes out.
+
 The display_life class is written by Qiaochu. This class generates a rectangle to display remaining lives and another rectangle to display the progress of the game. With each invader shot, the bar will turn red by 10% so that after 10 invaders being killed, the bar should be completely red. 
 The Lives class will create an object for each life that the player has with a total of 3. The lives will be indicated by 3 red circles, each time an invader lands, the player will lose a life.
-The invaders class written by Eleanor that creates an object that falls from the top and attempts to land on the bottom. They are killed by bullets and wiped from existence by the one-time bomb (although they don’t count toward the kill count). They are called in intervals and have dimensions, velocity, and movements that are determined by random functions.
+The invaders class written by Eleanor that creates an object that falls from the top and attempts to land on the bottom. They are killed by bullets and wiped from existence by the one-time bomb (although they donâ€™t count toward the kill count). They are called in intervals and have dimensions, velocity, and movements that are determined by random functions.
 
 
 
