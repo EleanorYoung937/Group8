@@ -130,6 +130,7 @@ void draw() {
         }
        }
   
+  // ** this is where the game tells if an invader was shot by the air craft's bullet
   shotCount = 0;
   landCount = 3;
   //display different kinds of bullets.
