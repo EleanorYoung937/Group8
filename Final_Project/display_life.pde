@@ -18,10 +18,21 @@ class display_life {
 
   void progress(int killed) {
     fill(0);
+    rect(50, 50, 100, 50);
+    
+    fill(255);
+    text("score", 85, 70);
+    textSize(17);
+    fill(255,99,71);
+    text(killed, 92,90);
+  }
+  
+  void power(int coins) {
+    fill(0);
     rect(100, 950, 800, 20);
     
     fill(255,50,50);
-    int x = 80 * killed;
+    int x = 80 * coins;
     if (x <= 800){
       rect(100, 950, x, 20);
     }
