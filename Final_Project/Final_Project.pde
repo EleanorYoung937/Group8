@@ -1,6 +1,8 @@
 import processing.sound.*;
 SoundFile file;
 
+boolean playing;
+
 Aircraft A1;
 display_life dl;
 Lives[] player_lives;
@@ -47,12 +49,14 @@ void setup() {
   //println("Press 's' to change speed");
   //println("Press 't' to screenshot");
   file = new SoundFile(this, "game.mp3");
-  file.play();
+  //file.play();
   
-  //play = new Menu(300, 200, 400, 100, false, "PLAY");
-  //rules = new Menu(300, 400, 400, 100, false, "RULES");
-  //high_score = new Menu(300, 600, 400, 100, false, "HIGH SCORE");
-  //quit = new Menu(300, 800, 400, 100, false, "QUIT");
+  playing = false;
+  
+  play = new Menu(300, 200, 400, 100, false, "PLAY");
+  rules = new Menu(300, 400, 400, 100, false, "RULES");
+  high_score = new Menu(300, 600, 400, 100, false, "HIGH SCORE");
+  quit = new Menu(300, 800, 400, 100, false, "QUIT");
   
   rate = 60;
   size(1000, 1000);
@@ -106,6 +110,17 @@ void setup() {
 }
 
 void draw() {
+  background(0);
+
+  play.check();
+  play.display();
+  
+  quit.check();
+  quit.display();
+  
+  if (playing == false){
+  }else{
+    
 
   background(255);
   textAlign(CENTER);
@@ -284,6 +299,7 @@ void draw() {
     setup();
     noLoop();}
 }
+}
 
   void keyPressed() {
 
@@ -354,4 +370,14 @@ void draw() {
       
   void keyReleased() {
     A1.move(0, 0);
+  }
+  
+  void mousePressed(){
+    if (play.boxHover){
+      playing = true;
+    }
+    if (quit.boxHover) {
+      exit();
+  }
+    
   }
