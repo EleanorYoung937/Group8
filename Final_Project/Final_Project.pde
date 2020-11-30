@@ -35,10 +35,12 @@ int idx ;
 int delay;
 int nextTimer;
 
+
 Menu play;
 Menu quit;
 Menu rules;
 Menu high_score;
+
 
 void setup() {
   //println("Welcome to a galaxy far far away!");
@@ -49,7 +51,7 @@ void setup() {
   //println("Press 's' to change speed");
   //println("Press 't' to screenshot");
   file = new SoundFile(this, "game.mp3");
-  //file.play();
+  file.play();
   
   playing = false;
   
@@ -111,6 +113,9 @@ void setup() {
 
 void draw() {
   background(0);
+  textAlign(CENTER,CENTER);
+  textSize(30);
+  text("AIRPLANE INVADERS", 500, 100);
 
   play.check();
   play.display();
@@ -302,7 +307,9 @@ void draw() {
 }
 
   void keyPressed() {
-
+    if (key == 'm'|| key == 'M'){
+      file.stop();
+    }
     if (keyPressed & keyCode == LEFT) {
       A1.move(-v, 0);
     }
