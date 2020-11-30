@@ -182,17 +182,17 @@ void draw() {
   //inerate through lists of bullets
   for (int i=0; i<enemy_bullets.length; i++) {
     ArrayList<Bullet> e = enemy_bullets[i];
-    int position = 0;
+    //int position = 0;
     //innerate through bullets
     for (Bullet b : e) {
       //Bullet b = e.get(i);
       b.display();
       A1.shotornot(b.x, b.y, b.r);
-      if (b.y< -20||b.y>height+20||b.x<-20||b.x>width+20){
-        enemy_bullets_copy[i].remove(position);
-        position = position - 1;
-      }
-      position ++;
+      //if (b.y< -20||b.y>height+20||b.x<-20||b.x>width+20){
+      //  enemy_bullets_copy[i].remove(position);
+      //  position = position - 1;
+      //}
+      //position ++;
     }
   }
   enemy_bullets = enemy_bullets_copy;
