@@ -1,7 +1,7 @@
 class Coin {
   float x; 
   float y; 
-  float r = random(5,15); 
+  float r = random(10,20); 
   boolean collected = false;
   
   Coin(float ix, float iy, float iw, float ih) {
@@ -15,7 +15,7 @@ class Coin {
     fill(255);
   }
   
-  void collected(float bx, float by, float br) {
+  void collected(float bx, float by) {
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
     if( (bx > x - r && bx < x + r ) && (by > y - r && by < y + r)){
       //the point is inside the rectangle

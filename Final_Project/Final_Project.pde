@@ -14,15 +14,18 @@ ArrayList<Bullet> shoot4;
 //ArrayList<ArrayList<Bullet>> enemy_bullets;
 ArrayList<Bullet>[] enemy_bullets;
 ArrayList<Bullet>[] enemy_bullets_copy;
+ArrayList<Coin> money;
 
 Bullet boom;
-Bullet test;
+//Bullet test;
 boolean boomUsed;
 boolean boomEnded;
 boolean paused = false;
 boolean gameOver= false;
 int shotCount = 3;
+int[] killList;
 int landCount = 0;
+int coinsCollected = 0;
 boolean [] life = {true, true, true};
 
 float v ;
@@ -81,13 +84,14 @@ void setup() {
   shoot2 = new ArrayList<Bullet>();
   shoot3 = new ArrayList<Bullet>();
   shoot4 = new ArrayList<Bullet>();
+  money = new ArrayList<Coin>();
   //enemy_bullets = new ArrayList<ArrayList<Bullet>>();
   enemy_bullets = new ArrayList[30];
   enemy_bullets_copy = new ArrayList[30];
   boom = new Bullet(10, A1.x, A1.y,0,-5);
   
   
-  test = new Bullet(10,500,900,0,-5);
+  //test = new Bullet(10,500,900,0,-5);
   
   //create invaders
   for (int i = 0; i < invaders.length; i++) {
@@ -189,24 +193,28 @@ void draw() {
         }
       }
        
-  //display enemy bullets and determine if plane has been shot
+  //remove bullets out of frame
   for(int i=0; i<enemy_bullets.length; i++){
     ArrayList<Bullet> e = enemy_bullets[i];
     ArrayList<Bullet> f = enemy_bullets_copy[i];
     int j =0;
     for(Bullet b : e){
-      f.set(j, b);
-      j ++;
+      if (!(b.y< -20||b.y>height+20||b.x<-20||b.x>width+20)){
+        f.set(j, b);
+        j ++;
+      }
     }
   }
-  //inerate through lists of bullets
+  enemy_bullets = enemy_bullets_copy;
+  
+  //display enemy bullets and determine if plane has been shot
   for (int i=0; i<enemy_bullets.length; i++) {
     ArrayList<Bullet> e = enemy_bullets[i];
     //int position = 0;
     //innerate through bullets
     for (Bullet b : e) {
       //Bullet b = e.get(i);
-      b.display();
+      b.invader();
       A1.shotornot(b.x, b.y, b.r);
       //if (b.y< -20||b.y>height+20||b.x<-20||b.x>width+20){
       //  enemy_bullets_copy[i].remove(position);
@@ -215,12 +223,10 @@ void draw() {
       //position ++;
     }
   }
-  enemy_bullets = enemy_bullets_copy;
-  
   
   shotCount = 0;
   landCount = 3;
-  //display different kinds of bullets.
+  //display different kinds of bullets and determine if invader has been shot
   for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {
     for (Bullet b : shoot) {
       invaders[i].shotornot(b.x, b.y, b.r);
@@ -235,24 +241,46 @@ void draw() {
       invaders[i].shotornot(b.x, b.y, b.r);
     }
    if (invaders[i].killed == true) {
-      shotCount += 1;
+     shotCount += 1;
+     if (invaders[i].coins == false){
+       invaders[i].coins = true;
+       int num = int(random(1,5));
+       for (int z = 0; z < num; z++){
+         Coin c = new Coin(invaders[i].x, invaders[i].y, invaders[i].wid, invaders[i].hig);
+         money.add(c);
+       }
+     }
     } 
     if (invaders[i].landed == true) {
       landCount -= 1;
       life[landCount] = false;
     }
-    if (millis()-invaders[i].time > 500){     
+    if (millis()-invaders[i].time % 1500 == 0){
+        Bullet b2 = new Bullet(10,invaders[i].x,invaders[i].y,-3,3);
+        enemy_bullets[i].add(b2);
+      }
+    if (millis()-invaders[i].time > 3000){     
       Bullet b1 = new Bullet(10,invaders[i].x,invaders[i].y,-3,-3);
-      Bullet b2 = new Bullet(10,invaders[i].x,invaders[i].y,-3,3);
       enemy_bullets[i].add(b1);
-      enemy_bullets[i].add(b2);
       invaders[i].time =millis();
-      
+    }
+}
+
+  //display coins and check for collection
+  coinsCollected = 0;
+  for(Coin c : money){
+    if (c.collected == false){
+      c.display();
+      c.collected(A1.x, A1.y);
+    }
+    else{
+      coinsCollected++;
+    }
   }
-  }
+  
   //Aircraft being shot
-  test.display();
-  A1.shotornot(test.x, test.y, test.r);
+  //test.display();
+  //A1.shotornot(test.x, test.y, test.r);
   if (A1.killed==true){
   if (millis()-A1.time > 1000){
     A1.killed = false;

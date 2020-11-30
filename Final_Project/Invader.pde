@@ -11,6 +11,7 @@ class Invader{
  boolean landed = false;
  boolean killed = false;
  boolean wiped = false;
+ boolean coins = false;
  
  //vectors of additional x and y movements and chose from them at random
  int[] move = {100,-100,50,20,-20,20,-40,40,17,-17,-6,-20,8,9,9,30,-30,-7,7,4,-7,6,8,30,-17,
@@ -89,6 +90,7 @@ class Invader{
     void shotornot2(float bx, float by, float br) {
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
     bx += 25;
+    by -= 20;
     if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
       resistance = resistance - 1;
