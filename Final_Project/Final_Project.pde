@@ -1,3 +1,6 @@
+import processing.sound.*;
+SoundFile file;
+
 Aircraft A1;
 display_life dl;
 Lives[] player_lives;
@@ -30,6 +33,11 @@ int idx ;
 int delay;
 int nextTimer;
 
+Menu play;
+Menu quit;
+Menu rules;
+Menu high_score;
+
 void setup() {
   //println("Welcome to a galaxy far far away!");
   //println("Press arrow keys to move your aircraft in different directions.");
@@ -38,6 +46,13 @@ void setup() {
   //println("Press 'p' to pause the game"); 
   //println("Press 's' to change speed");
   //println("Press 't' to screenshot");
+  file = new SoundFile(this, "game.mp3");
+  file.play();
+  
+  //play = new Menu(300, 200, 400, 100, false, "PLAY");
+  //rules = new Menu(300, 400, 400, 100, false, "RULES");
+  //high_score = new Menu(300, 600, 400, 100, false, "HIGH SCORE");
+  //quit = new Menu(300, 800, 400, 100, false, "QUIT");
   
   rate = 60;
   size(1000, 1000);
