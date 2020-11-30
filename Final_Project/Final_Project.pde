@@ -31,13 +31,13 @@ int delay;
 int nextTimer;
 
 void setup() {
-  println("Welcome to a galaxy far far away!");
-  println("Press arrow keys to move your aircraft in different directions.");
-  println("Press 'z' 'x' 'c' 'v' to change shooting mode.");
-  println("Press 'b' for one time use of bomb to clear whole screen.");
-  println("Press 'p' to pause the game"); 
-  println("Press 's' to change speed");
-  println("Press 't' to screenshot");
+  //println("Welcome to a galaxy far far away!");
+  //println("Press arrow keys to move your aircraft in different directions.");
+  //println("Press 'z' 'x' 'c' 'v' to change shooting mode.");
+  //println("Press 'b' for one time use of bomb to clear whole screen.");
+  //println("Press 'p' to pause the game"); 
+  //println("Press 's' to change speed");
+  //println("Press 't' to screenshot");
   
   rate = 60;
   size(1000, 1000);
@@ -67,9 +67,6 @@ void setup() {
   
   
   test = new Bullet(10,500,900,0,-5);
-  
-  //landCount = 3;
-  //shotCount = 0;
   
   //create invaders
   for (int i = 0; i < invaders.length; i++) {
