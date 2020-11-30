@@ -32,6 +32,13 @@ class Invader{
  
  void display() {
    
+   //invaders with zero resistance are declared dead
+   if(resistance == 0){
+      killed = true;
+      velocity = 0;
+      acceleration = 0;
+   }
+   
    //landed invaders are safe from bullets
    if (y + hig/2 >= height && killed == false && wiped == false){
      landed = true;
@@ -68,14 +75,14 @@ class Invader{
     line(x - wid/18, y + hig/4, x + wid/18, y + hig/4);
    }
  }
+ 
+ // resistance is decrimented if invader is hit
 
   void shotornot(float bx, float by, float br) {
     // adapted from https://happycoding.io/tutorials/processing/collision-detection
     if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
-      killed = true;
-      velocity = 0;
-      acceleration = 0;
+      resistance = resistance - 1;
     }
   }
   
@@ -84,16 +91,12 @@ class Invader{
     bx += 25;
     if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
-      killed = true;
-      velocity = 0;
-      acceleration = 0;
+      resistance = resistance - 1;
     }
     bx -= 50;
     if( (bx > x - wid/2 && bx < x + wid/2 ) && (by > y - hig/2 && by < y + hig/2) && landed == false && wiped == false){
       //the point is inside the rectangle
-      killed = true;
-      velocity = 0;
-      acceleration = 0;
+      resistance = resistance - 1;
     }
   }
 }

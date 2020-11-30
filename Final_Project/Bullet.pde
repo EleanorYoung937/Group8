@@ -77,4 +77,17 @@ class Bullet extends Aircraft {
       else{return false;}}
     else{  
     return true;}}
+    
+  //shooting mode1: invader bullet
+  void invader() {
+    fill(color(255, 0, 0));
+    pushMatrix();
+    translate(x,y);
+    bezier(0,10,15,1,15,22,0,25);
+    bezier(0,10,-15,1,-15,22,0,25);
+    y -= bvy;
+    x -= bvx;
+    popMatrix();
+    fill(255);
+  }
 }
