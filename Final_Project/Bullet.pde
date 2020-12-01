@@ -80,7 +80,7 @@ class Bullet extends Aircraft {
     
   //shooting mode1: invader bullet
   void invader() {
-    fill(color(255, 0, 0));
+    fill(color(0, 255, 0));
     pushMatrix();
     translate(x,y);
     bezier(0,10,15,1,15,22,0,25);
