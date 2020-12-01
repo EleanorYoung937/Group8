@@ -85,7 +85,8 @@ class Bullet extends Aircraft {
     translate(x,y);
     bezier(0,10,15,1,15,22,0,25);
     bezier(0,10,-15,1,-15,22,0,25);
-    y -= bvy/2;
+    y += bvy;
+    x += bvx;
     popMatrix();
     fill(255);
   }

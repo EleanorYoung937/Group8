@@ -108,7 +108,7 @@ void setup() {
     float h = random(w - 10, w + 40);
     float x = random(w, width - w);
     int r = int(random(1, 3));
-    float v = random(1/10, 2);
+    float v = random(1/50, 1);
     invaders[i] = new Invader(x, - h/2, w, h, r, v);
     //create an array to store an array of bullets for each invader
     ArrayList<Bullet> e = new ArrayList<Bullet>();
@@ -282,11 +282,11 @@ void draw() {
         life[landCount] = false;
       }
       if (millis()-invaders[i].time % 1500 == 0) {
-        Bullet b2 = new Bullet(10, invaders[i].x, invaders[i].y, -3, 3);
+        Bullet b2 = new Bullet(10, invaders[i].x, invaders[i].y, 0, 3);
         enemy_bullets[i].add(b2);
       }
       if (millis()-invaders[i].time > 3000) {     
-        Bullet b1 = new Bullet(10, invaders[i].x, invaders[i].y, -3, -3);
+        Bullet b1 = new Bullet(10, invaders[i].x, invaders[i].y, 0, -3);
         enemy_bullets[i].add(b1);
         invaders[i].time =millis();
       }
