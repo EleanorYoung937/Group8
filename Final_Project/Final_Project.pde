@@ -401,20 +401,20 @@ void keyPressed() {
     time = millis();
   }
   //press x to fire with mode 2
-  if (keyPressed & (key == 'x' || key == 'X')&millis()-time2 >100) {
+  if (keyPressed & (key == 'x' || key == 'X')&millis()-time2 >100 &coinsCollected>=15) {
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);
     shoot2.add(b);
     time2 = millis();
   }
   //press c to fire with mode 3
-  if (keyPressed & (key == 'c' || key == 'C')&millis()-time >50) {
+  if (keyPressed & (key == 'c' || key == 'C')&millis()-time >50&coinsCollected>=30) {
 
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);
     shoot3.add(b);
     time = millis();
   }
   //press v to fire with mode 4
-  if (keyPressed & (key == 'v' || key == 'V')&millis()-time2 >100) {
+  if (keyPressed & (key == 'v' || key == 'V')&millis()-time2 >100&coinsCollected>=45) {
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);
     shoot4.add(b);
     time2 = millis();
