@@ -1,7 +1,7 @@
 class Coin {
   float x; 
   float y; 
-  float r = random(10,20); 
+  float r = random(30,50); 
   boolean collected = false;
   
   Coin(float ix, float iy, float iw, float ih) {
