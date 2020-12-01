@@ -6,7 +6,7 @@ SoundFile file;
 boolean playing;
 PImage description;
 boolean display = false;
-boolean 
+
 
 Table table;
 Table table2;
@@ -54,7 +54,7 @@ Menu high_score;
 
 void setup() {
   file = new SoundFile(this, "game.mp3");
-  file.loop();
+  //file.loop();
   file.play();
 
   playing = false;
@@ -69,7 +69,7 @@ void setup() {
   table.addColumn("PLAYER");
   table.addColumn("SCORE");
   
-  table2 = loadTable("score.CSV", "header");
+  //table2 = loadTable("score.CSV", "header");
   
   rate = 60;
   size(1000, 1000);
@@ -350,8 +350,9 @@ void draw() {
       player_id += 1;
       newRow.setInt("PLAYER", player_id);
       newRow.setInt("SCORE", shotCount);
-      saveTable(table, "score/score.CSV");
+      //saveTable(table, "score/score.CSV");
       setup();
+      file.stop();
       noLoop();
     }
 
@@ -364,19 +365,22 @@ void draw() {
       fill(255, 50, 50);
       text("YOU WIN!", 500, 400);
       fill(0);
-      text("Press r to restart", 500, 500);
+      text("Press r to return to main menu", 500, 500);
       text("Press q to quit", 500, 600);
       fill(255);
+      TableRow newRow = table.addRow();
+      player_id += 1;
+      newRow.setInt("PLAYER", player_id);
+      newRow.setInt("SCORE", shotCount);
+      //saveTable(table, "score/score.CSV");
       setup();
+      file.stop();
       noLoop();
     }
   }
 }
 
 void keyPressed() {
-  if (key == 'm'|| key == 'M') {
-    file.stop();
-  }
   if (keyPressed & keyCode == LEFT) {
     A1.move(-v, 0);
   }
@@ -461,8 +465,8 @@ void mousePressed() {
 
     display = true;
   }
-  if (display == true && mouseX >= 10 && mouseX <= 50
-    && mouseY >= 10 && mouseY <= 50 ) {
+  if (display == true && mouseX >= 10 && mouseX <= 40
+    && mouseY >= 25 && mouseY <= 65 ) {
     display = false;
   }
   if (high_score.boxHover){
