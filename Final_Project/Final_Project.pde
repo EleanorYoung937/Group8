@@ -24,6 +24,7 @@ ArrayList<Bullet> shoot4;
 ArrayList<Bullet>[] enemy_bullets;
 ArrayList<Bullet>[] enemy_bullets_copy;
 ArrayList<Coin> money;
+boolean musicPlay;
 
 Bullet boom;
 //Bullet test;
@@ -53,6 +54,14 @@ Menu rules;
 Menu high_score;
 
 void setup() {
+  background(255);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  textSize(30);
+  
+  text("Loading", 500, 500);
+  fill(255);
+  musicPlay = false;
   file = new SoundFile(this, "game.mp3");
   //file.loop();
   file.play();
@@ -124,6 +133,9 @@ void setup() {
 }
 
 void draw() {
+  if (musicPlay ==false){
+    file.play();
+    musicPlay = true;}
   background(0);
   textAlign(CENTER, CENTER);
   textSize(30);
