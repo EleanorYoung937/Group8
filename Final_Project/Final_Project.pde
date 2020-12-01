@@ -6,6 +6,7 @@ SoundFile file;
 boolean playing;
 PImage description;
 boolean display = false;
+boolean 
 
 Table table;
 Table table2;
@@ -53,6 +54,7 @@ Menu high_score;
 
 void setup() {
   file = new SoundFile(this, "game.mp3");
+  file.loop();
   file.play();
 
   playing = false;
@@ -66,9 +68,8 @@ void setup() {
   table = new Table();
   table.addColumn("PLAYER");
   table.addColumn("SCORE");
-  //saveTable(table, "score/score.CSV");
   
-  //table2 = loadTable("score.CSV", "header");
+  table2 = loadTable("score.CSV", "header");
   
   rate = 60;
   size(1000, 1000);
@@ -342,13 +343,14 @@ void draw() {
       fill(255, 50, 50);
       text("GAME OVER", 500, 200);
       fill(0);
-      text("Press r to restart", 500, 500);
+      text("Press r to return to main menu", 500, 500);
       text("Press q to quit", 500, 600);
       fill(255);
       TableRow newRow = table.addRow();
       player_id += 1;
       newRow.setInt("PLAYER", player_id);
       newRow.setInt("SCORE", shotCount);
+      saveTable(table, "score/score.CSV");
       setup();
       noLoop();
     }
@@ -463,7 +465,8 @@ void mousePressed() {
     && mouseY >= 10 && mouseY <= 50 ) {
     display = false;
   }
-
+  if (high_score.boxHover){
+  }
   if (quit.boxHover) {
     exit();
   }
