@@ -32,7 +32,7 @@ class display_life {
     rect(100, 950, 800, 20);
     
     fill(255,50,50);
-    int x = 80 * coins;
+    int x = 20 * coins;
     if (x <= 800){
       rect(100, 950, x, 20);
     }
