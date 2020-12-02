@@ -34,7 +34,7 @@ class Invader{
  void display() {
    
    //invaders with zero resistance are declared dead
-   if(resistance == 0){
+   if(resistance < 1){
       killed = true;
       velocity = 0;
       acceleration = 0;
