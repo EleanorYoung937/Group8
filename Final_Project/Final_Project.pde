@@ -39,6 +39,7 @@ float v ;
 float num ;	
 float time ;	
 float time2;	
+float gameTimer;
 //float time3;	
 int rate;	
 int idx ;	
@@ -117,6 +118,9 @@ void setup() {
   enemy_bullets = new ArrayList[30];	
   enemy_bullets_copy = new ArrayList[30];	
   boom = new Bullet(10, A1.x, A1.y, 0, -5);	
+  
+  gameTimer = millis();
+  
   //test = new Bullet(10,500,900,0,-5);	
   //create invaders	
   for (int i = 0; i < invaders.length; i++) {	
@@ -146,7 +150,7 @@ void draw() {
     musicPlay = true;
   }
   
-
+  
   background(0);	
   textAlign(CENTER, CENTER);	
   textSize(30);	
@@ -258,6 +262,8 @@ void draw() {
       for (int i = 0; i <= constrain(idx, 0, invaders.length - 1); i++) {	
         if (invaders[i].landed == false && invaders[i].killed == false) {	
           invaders[i].wiped = true;
+          invaders[i].killed = true;
+
         }
       }
     }	
@@ -306,7 +312,7 @@ void draw() {
       for (Bullet b : shoot4) {	
         invaders[i].shotornot(b.x, b.y, b.r);
       }	
-      if (invaders[i].killed == true) {	
+      if (invaders[i].killed ==true && invaders[i].wiped == false){	
         shotCount += 1;	
         if (invaders[i].coins == false) {	
           invaders[i].coins = true;	
@@ -325,7 +331,7 @@ void draw() {
         Bullet b2 = new Bullet(10, invaders[i].x, invaders[i].y, -3, 3);	
         enemy_bullets[i].add(b2);
       }	
-      if (millis()-invaders[i].time > 2000 & invaders[i].killed == false& invaders[i].landed == false) {     	
+      if (millis()-invaders[i].time > 2000 & invaders[i].killed == false& invaders[i].landed == false&invaders[i].wiped==false) {     	
         Bullet b1 = new Bullet(10, invaders[i].x, invaders[i].y, -1, -1);	
         Bullet b2 = new Bullet(10, invaders[i].x, invaders[i].y, -1, 1);	
         Bullet b3 = new Bullet(10, invaders[i].x, invaders[i].y, 1, -1);	
@@ -398,7 +404,7 @@ void draw() {
       noLoop();
     }	
     //check wining condition and set up again	
-    if (shotCount == 10) {  	
+    if (millis()-gameTimer > 200000) {  	
       gameOver = true;	
       textAlign(CENTER);	
       fill(0);	
