@@ -48,7 +48,7 @@ class Invader{
    }
    
    //alive invaders are displayed
-   if (killed == false && wiped == false){
+   if (killed == false){
      
      //invaders in the air speed up due to gravity
      if (landed == false){
