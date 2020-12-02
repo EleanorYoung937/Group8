@@ -61,10 +61,10 @@ void setup() {
   }
   //fill(255);	
   file = new SoundFile(this, "game.mp3");
-  //file.loop();	
+  file.loop();
 
-  float id = int(random(0, 999));
-  float id2 = int(random(0, 999));
+  int id = int(random(0, 999));
+  int id2 = int(random(0, 999));
   String [] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
   int index = int(random(letters.length));
   int index2 = int(random(letters.length));
@@ -142,9 +142,10 @@ void draw() {
 
 
   if (musicPlay ==false) {	
-    file.play();	
+    //file.play();	
     musicPlay = true;
   }
+  
 
   background(0);	
   textAlign(CENTER, CENTER);	
