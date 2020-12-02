@@ -32,7 +32,7 @@ class display_life {
     rect(100, 950, 800, 20);
     
     //fill(255,50,50);
-    float x = 35/3 * coins;
+    float x = 40/3 * coins;
     if (x <= 800){
       if (x <= 275){
         fill(255,50,50);
