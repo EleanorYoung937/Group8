@@ -4,8 +4,14 @@ class Aircraft {
   float vx; 
   float vy; 
   float r = 10;
+  
+  float pos = 0;
+  float inc = 2;
+  float wing = 20;
+  
   boolean killed = false;
   float time;
+  
   Aircraft(float _x, float _y) {
     x = _x;
     y = _y;
@@ -45,6 +51,16 @@ class Aircraft {
     fill(255);
     ellipse(0, -20, 2*r, 2*r/3);
     //triangle(0, -30, -10, -10, 10, -10); 
+    
+    //multilevel animantion
+    if (pos % (2 * wing) >= - wing && pos % (2 * wing) <= wing){
+      translate(0, pos % (2 * wing));
+    }
+    else {
+      translate(0, wing - pos % (2 * wing));
+    }
+    
+    pos = pos + inc;
     //left wing
     fill(color(51,153,255));
     triangle(-20, -5, -40, -25, -33,-10); 
@@ -56,7 +72,6 @@ class Aircraft {
     endShape();
     triangle(-20, 5, -40, 25, -33,10);
     //right wing
-    
     triangle(20, -5, 40, -25, 33,-10); 
     beginShape();
     vertex(20,0); 
