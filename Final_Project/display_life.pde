@@ -33,17 +33,15 @@ class display_life {
     
     //fill(255,50,50);
     float x = 40/3 * coins;
-    if (x <= 800){
       if (x <= 275){
         fill(255,50,50);
-      }else if (x <= 450){
+      }else if (x > 275 && x <= 450){
         fill(245,32,206);
-      }else if (x <= 625){
+      }else if (x > 450 && x <= 625){
         fill(219,32,245);
-      }else{
+      }else if (x > 625 && x <= 800){
         fill(153, 51, 255);
       }
       rect(100, 950, x, 20);
-    }
   }
 }
