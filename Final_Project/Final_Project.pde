@@ -404,7 +404,7 @@ void draw() {
       noLoop();
     }	
     //check wining condition and set up again	
-    if (millis()-gameTimer > 200000) {  	
+    if (millis()-gameTimer > 50000) {  	
       gameOver = true;	
       textAlign(CENTER);	
       fill(0);	
