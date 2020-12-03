@@ -1,11 +1,11 @@
-import processing.sound.*;	
-//importing music into the game reference	
-//https://processing.org/reference/libraries/sound/SoundFile.html	
-SoundFile file;	
+import ddf.minim.*;
+//referenced http://code.compartmental.net/minim/minim_class_minim.html
+Minim minim;
+AudioPlayer player;
+float musicTimer;
 boolean playing;	
 PImage description;	
 boolean display = false;
-boolean muted = false;
 boolean score_display = false;	
 Table table;	
 //Table table2;	
@@ -53,17 +53,17 @@ Button mute;
 Button speed;
 
 void setup() {
-  if (musicPlay == false) {	
-    background(0);	
-    fill(255);	
-    textAlign(CENTER, CENTER);	
-    textSize(30);	
-    text("Now Loading ......", 800, 900);
-  }
-  //fill(255);	
-  file = new SoundFile(this, "game.mp3");
-  file.loop();
-
+  //if (musicPlay == false) {	
+  //  background(0);	
+  //  fill(255);	
+  //  textAlign(CENTER, CENTER);	
+  //  textSize(30);	
+  //  text("Now Loading ......", 800, 900);
+  //}
+  
+  minim = new Minim(this);
+  player = minim.loadFile("music.mp3");
+  player.loop();
   int id = int(random(0, 999));
   int id2 = int(random(0, 999));
   String [] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -145,10 +145,10 @@ void setup() {
 void draw() {	
 
 
-  if (musicPlay ==false) {	
-    //file.play();	
-    musicPlay = true;
-  }
+  //if (musicPlay ==false) {	
+  //  player.play();	
+  //  musicPlay = true;
+  //}
   
   
   background(0);	
@@ -398,13 +398,13 @@ void draw() {
       newRow.setString("PLAYER", player_id);	
       newRow.setInt("SCORE", shotCount);	
       saveTable(table, "score/score.CSV");	
-      file.stop();	
+      player.pause();	
       setup();	
 
       noLoop();
     }	
     //check wining condition and set up again	
-    if (millis()-gameTimer > 50000) {  	
+    if (millis()-gameTimer > 100000) {  	
       gameOver = true;	
       textAlign(CENTER);	
       fill(0);	
@@ -419,7 +419,7 @@ void draw() {
       newRow.setString("PLAYER", player_id);	
       newRow.setInt("SCORE", shotCount);	
       saveTable(table, "score/score.CSV");	
-      file.stop();	
+      player.pause();	
       setup();	
 
       noLoop();
@@ -491,13 +491,6 @@ void keyPressed() {
   if (gameOver == true &(key == 'q'|| key == 'Q')) {	
     exit();
   }	
-  //if (keyPressed &(key == 's'|| key == 'S')) {	
-  //  rate = (rate+60) %240;	
-  //  if (rate==0) {	
-  //    rate = 60;	
-  //  }	
-  //  frameRate(rate);	
-  //}
 }	
 void keyReleased() {	
   A1.move(0, 0);
@@ -523,12 +516,12 @@ void mousePressed() {
   if (quit.boxHover) {	
     exit();
   }	
-  if (mute.buttonHover && muted == false) {
-    muted = true;
-    file.stop();
+  if (mute.buttonHover && player.isPlaying()){
+    player.pause();
+    musicTimer = millis();
   }
-  if (mute.buttonHover && muted == true) {
-    muted = false;
+  if (mute.buttonHover && player.isPlaying() == false && millis()-musicTimer > 100){
+    player.loop();
   }
   if (speed.buttonHover) {  
     rate = (rate+60) %240;  

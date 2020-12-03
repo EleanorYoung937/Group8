@@ -11,6 +11,7 @@ class Coin {
   
   void display() {
     fill(color(252, 186, 3));
+    y += 1;
     ellipse(x, y, r, r);
     fill(255);
   }
