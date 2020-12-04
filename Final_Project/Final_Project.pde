@@ -9,7 +9,7 @@ PImage description;
 boolean display = false;
 boolean score_display = false;	
 Table table;	
-//Table table2;	
+PImage img;	
 String player_id;	
 Aircraft A1;	
 display_life dl;	
@@ -54,19 +54,12 @@ Button mute;
 Button speed;
 
 void setup() {
-  //if (musicPlay == false) {	
-  //  background(0);	
-  //  fill(255);	
-  //  textAlign(CENTER, CENTER);	
-  //  textSize(30);	
-  //  text("Now Loading ......", 800, 900);
-  //}
   minim = new Minim(this);
   player = minim.loadFile("music.mp3");
   if (muted == false){
-  
     player.loop();
   }
+  img = loadImage("space.jpg");
   int id = int(random(0, 999));
   int id2 = int(random(0, 999));
   String [] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -193,6 +186,8 @@ void draw() {
   if (playing == false) {
   } else {	
     background(255);
+    img.resize(1000, 1000);  
+    image(img, 0, 0);
     mute.check();
     mute.display();	
 
@@ -383,14 +378,14 @@ void draw() {
     if (lifeCount ==0) {  	
       gameOver = true;	
       textAlign(CENTER);	
-      fill(0);	
+      //fill(255);	
       textSize(30);	
       fill(255, 50, 50);	
       text("GAME OVER", 500, 200);	
-      fill(0);	
+      fill(255);	
       text("Press r to return to main menu", 500, 500);	
       text("Press q to quit", 500, 600);	
-      fill(255);	
+      //fill(255);	
       TableRow newRow = table.addRow();		
       newRow.setString("PLAYER", player_id);	
       newRow.setInt("SCORE", shotCount);	
@@ -404,14 +399,14 @@ void draw() {
     if (millis()-gameTimer > 100000) {  	
       gameOver = true;	
       textAlign(CENTER);	
-      fill(0);	
+      //fill(255);	
       textSize(30);	
       fill(255, 50, 50);	
       text("YOU WIN!", 500, 400);	
-      fill(0);	
+      fill(255);	
       text("Press r to return to main menu", 500, 500);	
       text("Press q to quit", 500, 600);	
-      fill(255);	
+      //fill(255);	
       TableRow newRow = table.addRow();	
       newRow.setString("PLAYER", player_id);	
       newRow.setInt("SCORE", shotCount);	
@@ -516,10 +511,10 @@ void mousePressed() {
   if (mute.buttonHover && player.isPlaying()){
     player.pause();
     musicTimer = millis();
+    muted = true;
   }
   if (mute.buttonHover && player.isPlaying() == false && millis()-musicTimer > 100){
     player.loop();
-    muted = true;
   }
   if (speed.buttonHover) {  
     rate = (rate+60) %240;  

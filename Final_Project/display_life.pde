@@ -21,8 +21,8 @@ class display_life {
     rect(50, 50, 100, 50);
     
     fill(255);
-    text("score", 85, 70);
-    textSize(17);
+    textSize(20);
+    text("score", 77, 70);
     fill(255,99,71);
     text(killed, 92,90);
   }
