@@ -2,6 +2,7 @@ import ddf.minim.*;
 //referenced http://code.compartmental.net/minim/minim_class_minim.html
 Minim minim;
 AudioPlayer player;
+boolean muted = false;
 float musicTimer;
 boolean playing;	
 PImage description;	
@@ -60,10 +61,12 @@ void setup() {
   //  textSize(30);	
   //  text("Now Loading ......", 800, 900);
   //}
-  
   minim = new Minim(this);
   player = minim.loadFile("music.mp3");
-  player.loop();
+  if (muted == false){
+  
+    player.loop();
+  }
   int id = int(random(0, 999));
   int id2 = int(random(0, 999));
   String [] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -83,6 +86,7 @@ void setup() {
   speed = new Button(980, 90, 25, false);
 
   table = loadTable("score/score.CSV", "header");	
+  table.setColumnType(1, Table.INT);
   table.sortReverse(1);
   saveTable(table, "score/score.CSV");    
 
@@ -143,13 +147,6 @@ void setup() {
   }
 }	
 void draw() {	
-
-
-  //if (musicPlay ==false) {	
-  //  player.play();	
-  //  musicPlay = true;
-  //}
-  
   
   background(0);	
   textAlign(CENTER, CENTER);	
@@ -502,7 +499,7 @@ void mousePressed() {
   if (rules.boxHover) {	
     display = true;
   }	
-  if (display == true && mouseX >= 10 && mouseX <= 40	
+  if (display == true && mouseX >= 5 && mouseX <= 34	
     && mouseY >= 25 && mouseY <= 65 ) {	
     display = false;
   }	
@@ -522,6 +519,7 @@ void mousePressed() {
   }
   if (mute.buttonHover && player.isPlaying() == false && millis()-musicTimer > 100){
     player.loop();
+    muted = true;
   }
   if (speed.buttonHover) {  
     rate = (rate+60) %240;  
