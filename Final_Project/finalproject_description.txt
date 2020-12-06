@@ -1,0 +1,18 @@
+This doccument summarizes the project functionalities and implementations, what the included classes do, and any unexpected challenges.
+
+Keyboard interactivity - Minghan
+Multiple GUI systems - Qiaochu
+Class objects with animation hierarchies - Minghan and Eleanor
+Data input/output - Qiaochu
+Sound - Qiaochu
+
+Aircraft - This class has an animation hierarchy (Eleanor) that allows the wings to flap while the aircraft moves.
+Bullet -
+Button -
+Coin (Eleanor)- This class is just a display function with an ellipse and a function called 'collected' which determines if the airplane is within it's area which would mean the coin was collected. In the main file, when an enemy is shot and killed it generates 1-6 coins. The height and width of the invader are taken as imput and the x, y cordinates are generated randomly within two width and height distances for the invader's center.
+display_life - 
+Invader (Eleanor)- This class takes x, y, hieght, and width floats to determine the dimensions and position of the invader. It takes a float for y velocity, which makes the invader fall, and an int for resistance which determines how many times the invader must be shot to die. It keeps track of whether the invader has generated coins, been killed and/or wiped out by the bomb, and landed on the ground. It accelerates slightly as it falls and may randomly move sideways or in the x direction. It also has a collision function called shotornot, that determines if the invader has been shot by bullets. There is a variation on it for one of the types of bullets.
+Lives - 
+Menu -
+
+Challenges:
