@@ -30,6 +30,7 @@ boolean boomUsed;
 boolean boomEnded;	
 boolean paused = false;	
 boolean gameOver= false;	
+boolean godMode;
 int shotCount;	
 int[] killList;	
 int landCount;	
@@ -41,6 +42,8 @@ float num ;
 float time ;	
 float time2;	
 float gameTimer;
+float timePause;
+float Remaining;
 //float time3;	
 int rate;	
 int idx ;	
@@ -66,7 +69,8 @@ void setup() {
   int index = int(random(letters.length));
   int index2 = int(random(letters.length));
   player_id = letters[index]+ id + letters[index2] + id2;
-
+  
+  godMode = false;
   //musicPlay = false;	
   playing = false;	
   description = loadImage("rules.png");	
@@ -116,7 +120,7 @@ void setup() {
   enemy_bullets_copy = new ArrayList[30];	
   boom = new Bullet(10, A1.x, A1.y, 0, -5);	
   
-  gameTimer = millis();
+  
   
   //test = new Bullet(10,500,900,0,-5);	
   //create invaders	
@@ -395,8 +399,17 @@ void draw() {
 
       noLoop();
     }	
+    
+    //diaplay remaining time
+    Remaining = (70000- (millis()-gameTimer))/1000;
+    textAlign(CENTER);  
+    fill(255);  
+    textSize(15);
+    text(Remaining, 900, 150); 
+    fill(0);
+    
     //check wining condition and set up again	
-    if (millis()-gameTimer > 100000) {  	
+    if (millis()-gameTimer > 70000) {  	
       gameOver = true;	
       textAlign(CENTER);	
       //fill(255);	
@@ -431,6 +444,9 @@ void keyPressed() {
   if (keyPressed &keyCode == DOWN) {	
     A1.move(0, v);
   }	
+  if (keyPressed & (key == 'g'|| key == 'G')) {  
+    godMode = !godMode;
+  }  
   //press z to fire with mode 1	
   if (keyPressed & (key == 'z' || key == 'Z')&millis()-time >50) {	
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);	
@@ -438,19 +454,19 @@ void keyPressed() {
     time = millis();
   }	
   //press x to fire with mode 2	
-  if (keyPressed & (key == 'x' || key == 'X')&millis()-time2 >100 &coinsCollected>=15) {	
+  if ((keyPressed & (key == 'x' || key == 'X')&millis()-time2 >100 &coinsCollected>=15)||godMode==true) {	
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);	
     shoot2.add(b);	
     time2 = millis();
   }	
   //press c to fire with mode 3	
-  if (keyPressed & (key == 'c' || key == 'C')&millis()-time >50&coinsCollected>=30) {	
+  if ((keyPressed & (key == 'c' || key == 'C')&millis()-time >50&coinsCollected>=30)||godMode==true){	
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);	
     shoot3.add(b);	
     time = millis();
   }	
   //press v to fire with mode 4	
-  if (keyPressed & (key == 'v' || key == 'V')&millis()-time2 >100&coinsCollected>=45) {	
+  if ((keyPressed & (key == 'v' || key == 'V')&millis()-time2 >100&coinsCollected>=45)||godMode==true) {	
     Bullet b = new Bullet(10, A1.x, A1.y, 0, -5);	
     shoot4.add(b);	
     time2 = millis();
@@ -464,12 +480,15 @@ void keyPressed() {
     }
   }	
   if (key == 'p'|| key == 'P') {	
+    timePause = millis();
     paused = true;
   }	
   if (key == 't'|| key == 'T') {	
     saveFrame();
   }	
   if (key == 'r'|| key == 'R') {	
+    if(paused == true){
+      gameTimer += (millis()-timePause);}
     paused = false;	
     gameOver = false;	
     life[0] = true;	
@@ -490,6 +509,7 @@ void keyReleased() {
 void mousePressed() {	
   if (play.boxHover) {	
     playing = true;
+    gameTimer = millis();
   }	
   if (rules.boxHover) {	
     display = true;
