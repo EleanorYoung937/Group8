@@ -1,5 +1,5 @@
 1. Run the main file titled Final_Project.pde
-2. The home screen has a mute button in the upper right hand corner for the music, a play button to start the game, a rules button to show how to play the game, a high score button to see the score board, and a quit button to close the application. From the rules and score button, the user can return to the main page by clicking the X button. While playing the game by clicking on the button below mute button can play change the speed of the game.
+2. The home screen has a mute button in the upper right hand corner for the music, a play button to start the game, a rules button to show how to play the game, a high score button to see the score board, and a quit button to close the application. From the rules and score button, the user can return to the main page by clicking the X button. While playing the game by clicking on the button below mute button can player change the speed of the game.
 3. When playing the game the rules are as follows:
 A. To play the game you have to survive 2 minutes. The player moves the airplane character with the arrow keys and shoots different kinds of bullets with 'z', 'x', 'c', and 'v'. The last three bullets have to be earned by collecting coins.
 B. The player starts with 3 lives, each time they are shot by an invader they lose a life.
