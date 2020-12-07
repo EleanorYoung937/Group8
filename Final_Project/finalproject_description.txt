@@ -1,13 +1,17 @@
 This doccument summarizes the project functionalities and implementations, what the included classes do, and any unexpected challenges.
 
 Keyboard interactivity - Minghan
+Manual frame rate adjustment - Minghan 
+Different inner timer system (Remaining time, different shooting frequencies, pause&resume&restart) - Minghan 
 Multiple GUI systems - Qiaochu
 Class objects with animation hierarchies - Minghan and Eleanor
 Data input/output - Qiaochu
 Sound - Qiaochu
+Code interactions and program running - Together
 
 Aircraft - This class has an animation hierarchy (Eleanor) that allows the wings to flap while the aircraft moves.
-Bullet -
+         - (Minghan) This class disply the special visualization of an angel-like aircraft and can be moved by keyCode "up" "down" "left" and "right". After being shot by enemy bullets, the aircraft will glint for showing it is hitted.
+Bullet - (Minghan) This class has 6 different visualizations for 4 shooting modes, 1 boom and 1 enemy bullet. The bullet either comes from aircraft or from enemy invaders. 
 Button -
 Coin (Eleanor)- This class is just a display function with an ellipse and a function called 'collected' which determines if the airplane is within it's area which would mean the coin was collected. In the main file, when an enemy is shot and killed it generates 1-6 coins. The height and width of the invader are taken as imput and the x, y cordinates are generated randomly within two width and height distances for the invader's center.
 display_life - 
@@ -15,4 +19,11 @@ Invader (Eleanor)- This class takes x, y, hieght, and width floats to determine 
 Lives - 
 Menu -
 
-Challenges:
+Challenges: 1. Tons of interaction and each bullet should be monitored individually.
+Solution: Use Arraylist of bullet class and Array of ArrayList of bullet class, which enables every bullet be called indivisually thorugh loops. 
+2. Too much bullets brought burden to the memory.
+Solution: Add condition checkings to remove all bullets that are out of screen.
+3. It took too long to load music
+Solution:
+4. Game might be difficult
+Solution: Add a god mode which enables aircraft to continuously shooting all kinds of bullets, by pressing 'g'.
