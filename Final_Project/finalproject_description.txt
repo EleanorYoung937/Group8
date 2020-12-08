@@ -10,14 +10,14 @@ Sound - Qiaochu
 Code interactions and program running - Together
 
 Aircraft - This class has an animation hierarchy (Eleanor) that allows the wings to flap while the aircraft moves.
-         - (Minghan) This class disply the special visualization of an angel-like aircraft and can be moved by keyCode "up" "down" "left" and "right". After being shot by enemy bullets, the aircraft will glint for showing it is hitted.
+         - (Minghan) This class display the special visualization of an angel-like aircraft and can be moved by keyCode "up" "down" "left" and "right". After being shot by enemy bullets, the aircraft will glint for showing it is hit.
 Bullet - (Minghan) This class has 6 different visualizations for 4 shooting modes, 1 boom and 1 enemy bullet. The bullet either comes from aircraft or from enemy invaders. 
-Button -
-Coin (Eleanor)- This class is just a display function with an ellipse and a function called 'collected' which determines if the airplane is within it's area which would mean the coin was collected. In the main file, when an enemy is shot and killed it generates 1-6 coins. The height and width of the invader are taken as imput and the x, y cordinates are generated randomly within two width and height distances for the invader's center.
-display_life - 
+Button - (Qiaochu) This class is used to mute and change speed during the game. Once mute button is clicked, the player can click again to unmute, otherwise the music will be paused. Speed will change the frame rate of the animation, thus changing the speed of the game. 
+Coin (Eleanor)- This class is just a display function with an ellipse and a function called 'collected' which determines if the airplane is within it's area which would mean the coin was collected. In the main file, when an enemy is shot and killed it generates 1-6 coins. The height and width of the invader are taken as input and the x, y coordinates are generated randomly within two width and height distances for the invader's center.
+display_life - (Qiaochu) This class is used to display the score, the player lives as well as the power bar. Score will change as the invaders are killed or lands. Power bar will change a color every time 15 coins are collected to show that a new bullet has been unlocked.
 Invader (Eleanor)- This class takes x, y, hieght, and width floats to determine the dimensions and position of the invader. It takes a float for y velocity, which makes the invader fall, and an int for resistance which determines how many times the invader must be shot to die. It keeps track of whether the invader has generated coins, been killed and/or wiped out by the bomb, and landed on the ground. It accelerates slightly as it falls and may randomly move sideways or in the x direction. It also has a collision function called shotornot, that determines if the invader has been shot by bullets. There is a variation on it for one of the types of bullets.
-Lives - 
-Menu -
+Lives - (Qiaochu) this class is to display the actual lives of the player, which will be three circles. Every time the player is shot, the circle will turn black.
+Menu - (Qiaochu)This class is for user interactivity with the main menu, which consists of "PLAY", "RULES", "HIGH SCORE", and "QUIT". Whenever the user clicks on the button, it will corresponds to an action. The "RULES" button will allow the player to read the rules and exit back to the main menu by clicking the circle on the top. "HIGH SCORE" will be updated after each game, showing the player id and the score.  
 
 Challenges: 1. Tons of interaction and each bullet should be monitored individually.
 Solution: Use Arraylist of bullet class and Array of ArrayList of bullet class, which enables every bullet be called indivisually thorugh loops. 
